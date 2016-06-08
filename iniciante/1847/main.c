@@ -3,8 +3,9 @@
 #define DESCEU(a, b) ((a) > (b))
 #define SUBIU(a, b) ((a) < (b))
 #define IGUAL(a, b) ((a) == (b))
-#define FELIZ() printf(":)\n")
-#define TRISTE() printf(":()\n")
+#define FELIZ() printf(":)\n");
+#define TRISTE() printf(":(\n");
+#define DIFERENCA(a, b) ((a) - (b))
 
 int main (void) {
     int dia1,
@@ -14,17 +15,35 @@ int main (void) {
     scanf("%d %d %d", &dia1, &dia2, &dia3);
 
     if (DESCEU(dia1, dia2) && (SUBIU(dia2, dia3) || IGUAL(dia2, dia3))) {
-        FELIZ();
+        FELIZ()
     }
     else if (SUBIU(dia1, dia2) && (DESCEU(dia2, dia3) || IGUAL(dia2, dia3))) {
-        TRISTE();
+        TRISTE()
     }
     else if (SUBIU(dia1, dia2) && SUBIU(dia2, dia3)) {
-        if (dia3 < dia2 && ) {
-            /* code */
+        if (DIFERENCA(dia2, dia3) > DIFERENCA(dia1, dia2)) {
+            TRISTE()
+        }
+        else {
+            FELIZ()
         }
     }
-
+    else if (DESCEU(dia1, dia2) && DESCEU(dia2, dia3)) {
+        if (DIFERENCA(dia2, dia3) < DIFERENCA(dia1, dia2)) {
+            FELIZ()
+        }
+        else {
+            TRISTE()
+        }
+    }
+    else if (IGUAL(dia1, dia2)) {
+        if (SUBIU(dia2, dia3)) {
+            FELIZ()
+        }
+        else {
+            TRISTE()
+        }
+    }
 
     return 0;
 }
