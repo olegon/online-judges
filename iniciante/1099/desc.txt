@@ -1,0 +1,2 @@
+Soma de Ímpares Consecutivos II
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1099
