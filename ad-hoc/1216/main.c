@@ -8,7 +8,9 @@ int main (void) {
         quantidade = 0;
 
     while (caractere = getc(stdin), caractere != EOF) {
-        while (caractere = getc(stdin), caractere != '\n');
+        while (caractere != '\n') {
+            caractere = getc(stdin);
+        }
 
         scanf("%lf\n", &distancia);
 
