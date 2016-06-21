@@ -9,8 +9,8 @@ int main (void) {
     int     casos;
     char    str[STRING_SIZE];
 
-    scanf("%d", &casos);
-    gets(str);
+    scanf("%d%*c", &casos);
+    // gets(str);
 
     while (casos-- > 0) {
         fgets(str, STRING_SIZE, stdin);
