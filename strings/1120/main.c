@@ -15,15 +15,13 @@ int main (void) {
             strcpy(str, str + 1);
         }
 
-
         // Eliminar zeros à esquerda
         str = contrato;
         while (str[0] == '0') {
             strcpy(str, str + 1);
         }
 
-
-        // Se não sobrou nada, então é 0
+        // Se não sobrou nada, então é 0.
         if (contrato[0] == '\0') {
             printf("0\n");
         }
@@ -31,8 +29,6 @@ int main (void) {
             printf("%s\n", contrato);
         }
     }
-
-
 
     return 0;
 }
