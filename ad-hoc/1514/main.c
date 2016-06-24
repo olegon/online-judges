@@ -31,7 +31,7 @@ int main (void) {
             for (j = 0; j < numeroDeProblemas; j++) {
                 scanf("%d", &problemas[i][j]);
 
-                problemas[i][INDICE_DA_SOMA] = problemas[i][INDICE_DA_SOMA] || problemas[i][j] == 1;
+                problemas[i][INDICE_DA_SOMA] += problemas[i][j];
                 problemas[INDICE_DA_SOMA][j] += problemas[i][j];
             }
         }
@@ -98,7 +98,7 @@ int todosResolveramAoMenosUmProblema(int problemas[][NUMERO_MAXIMO_DE_PROBLEMAS]
     int i;
 
     for (i = 0; i < numeroDeParticipantes; i++) {
-        if (!problemas[i][INDICE_DA_SOMA]) {
+        if (problemas[i][INDICE_DA_SOMA] == 0) {
             return 0;
         }
     }
