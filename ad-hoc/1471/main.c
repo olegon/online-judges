@@ -17,13 +17,11 @@ int main (void) {
             // clear
             for (i = 1; i <= voltaram; i++) { scanf("%d", &mergulhadorQueVoltou); }
 
-            printf("*\n");
+            printf("*");
         }
         else {
             for (i = 1; i <= voltaram; i++) {
                 scanf("%d", &mergulhadorQueVoltou);
-
-                printf("DEBUG: %d\n", mergulhadorQueVoltou);
 
                 // set
                 mergulhadoresQueVoltaram[mergulhadorQueVoltou] = 1;
@@ -37,9 +35,9 @@ int main (void) {
                 // reset
                 mergulhadoresQueVoltaram[i] = 0;
             }
-
-            printf("\b\n\b");
         }
+
+        printf("\n");
     }
 
     return 0;
