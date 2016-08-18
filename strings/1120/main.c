@@ -4,29 +4,34 @@
 #define STRING_SIZE 128
 
 int main (void) {
-    char    tecla,
-            contrato[STRING_SIZE],
-            *str;
+    char    caractereComProblema,
+            *numeroPtr,
+            numero[STRING_SIZE];
 
-    while (scanf("%c %s\n", &tecla, contrato), tecla != '0' || strcmp(contrato, "0") != 0) {
-        // Eliminar caracteres com falha
-        str = contrato;
-        while (str = strchr(str, tecla), str != NULL) {
-            strcpy(str, str + 1);
+    while (scanf("%c %s%*c", &caractereComProblema, numero), caractereComProblema != '0' || strcmp(numero, "0") != 0) {
+        // remover caracteres com problema
+        numeroPtr = numero;
+        while (*numeroPtr != '\0') {
+            if (*numeroPtr == caractereComProblema) {
+                strcpy(numeroPtr, numeroPtr + 1);
+            }
+            else {
+                numeroPtr++;
+            }
         }
 
-        // Eliminar zeros à esquerda
-        str = contrato;
-        while (str[0] == '0') {
-            strcpy(str, str + 1);
+        // remover 0
+        numeroPtr = numero;
+        while (*numeroPtr == '0') {
+            strcpy(numeroPtr, numeroPtr + 1);
         }
 
-        // Se não sobrou nada, então é 0.
-        if (contrato[0] == '\0') {
+        // se não sobrou caracteres, então é 0
+        if (numero[0] == '\0') {
             printf("0\n");
         }
         else {
-            printf("%s\n", contrato);
+            printf("%s\n", numero);
         }
     }
 
