@@ -1,55 +1,71 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef int TIPO_DA_PILHA;
+typedef int STACK_TYPE;
 
 typedef struct {
-    TIPO_DA_PILHA *valores;
+    STACK_TYPE *values;
     int indice;
-} PILHA;
+    int size;
+} STACK;
 
-PILHA* pilha_criar(int tamanho);
-void pilha_reset(PILHA *pilha);
-void pilha_push(PILHA *pilha, TIPO_DA_PILHA dado);
-TIPO_DA_PILHA pilha_pop(PILHA *pilha);
+STACK* stack(int size);
+void reset(STACK *stack);
+void push(STACK *stack, STACK_TYPE dado);
+STACK_TYPE pop(STACK *stack);
+STACK_TYPE peek(const STACK *stack);
+int size(const STACK *stack);
+int empty(const STACK *stack);
 
-#define PILHA_SIZE 1024
+#define STACK_SIZE 1024
 
 int main (void) {
-    int vagoes;
 
     return 0;
 }
 
-PILHA* pilha_criar(int tamanho) {
-    PILHA *pilha;
+STACK* stack(int size) {
+    STACK *stack;
 
-    pilha = malloc(sizeof(PILHA));
+    stack = malloc(sizeof(STACK));
 
-    if (pilha == NULL) {
+    if (stack == NULL) {
         fprintf(stderr, "Sem espaço na memória.\n");
         exit(EXIT_FAILURE);
     }
 
-    pilha->valores = malloc(sizeof(TIPO_DA_PILHA) * tamanho);
-    if (pilha->valores == NULL) {
+    stack->values = malloc(sizeof(STACK_TYPE) * size);
+    if (stack->values == NULL) {
         fprintf(stderr, "Sem espaço na memória.\n");
         exit(EXIT_FAILURE);
     }
 
-    pilha->indice = 0;
+    stack->indice = 0;
+    stack->size = size;
 
-    return pilha;
+    return stack;
 }
 
-void pilha_reset(PILHA *pilha) {
-    pilha->indice = 0;
+void reset(STACK *stack) {
+    stack->indice = 0;
 }
 
-void pilha_push(PILHA *pilha, TIPO_DA_PILHA dado) {
-    pilha->valores[pilha->indice++] = dado;
+void push(STACK *stack, STACK_TYPE dado) {
+    stack->values[stack->indice++] = dado;
 }
 
-TIPO_DA_PILHA pilha_pop(PILHA *pilha) {
-    return pilha->valores[--pilha->indice];
+STACK_TYPE pop(STACK *stack) {
+    return stack->values[--stack->indice];
+}
+
+STACK_TYPE peek(const STACK *stack) {
+    return stack->values[stack->indice - 1];
+}
+
+int size(const STACK *stack) {
+    return stack->indice;
+}
+
+int empty(const STACK *stack) {
+    return size(stack) == 0;
 }
