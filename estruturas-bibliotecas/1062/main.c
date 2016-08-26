@@ -22,7 +22,8 @@ int empty(const STACK stack);
 int main (void) {
     int quantidadeDeVagoes,
         vagaoQueEstaEntrando,
-        vagaoQueDeveSair;
+        vagaoQueDeveSair,
+        vagoesLidos;
 
     STACK vagoesQueEntraram;
 
@@ -33,30 +34,49 @@ int main (void) {
         while (scanf("%d", &vagaoQueDeveSair), vagaoQueDeveSair != 0) {
             reset(vagoesQueEntraram);
             vagaoQueEstaEntrando = 1;
+            vagoesLidos = 1;
 
-            if (vagaoQueDeveSair != vagaoQueEstaEntrando) {
-                push(vagoesQueEntraram, vagaoQueEstaEntrando);
-            }
-
-            for (vagaoQueEstaEntrando = 2; vagaoQueEstaEntrando <= quantidadeDeVagoes; vagaoQueEstaEntrando++) {
-                scanf("%d", &vagaoQueDeveSair);
-
+            while (vagoesLidos < quantidadeDeVagoes && vagaoQueEstaEntrando <= quantidadeDeVagoes) {
                 if (vagaoQueDeveSair == vagaoQueEstaEntrando) {
-                    continue;
+                    scanf("%d", &vagaoQueDeveSair);
+                    vagoesLidos++;
+
+                    vagaoQueEstaEntrando++;
                 }
-                else if (!empty(vagoesQueEntraram) && peek(vagoesQueEntraram) == vagaoQueDeveSair) {
-                    pop(vagoesQueEntraram);
+                else if (!empty(vagoesQueEntraram) && vagaoQueDeveSair == peek(vagoesQueEntraram)) {
+                    while (size(vagoesQueEntraram) > 0 && vagaoQueDeveSair == peek(vagoesQueEntraram)) {
+                        pop(vagoesQueEntraram);
+
+                        if (vagoesLidos < quantidadeDeVagoes) {
+                            scanf("%d", &vagaoQueDeveSair);
+                            vagoesLidos++;
+                        }
+                    }
                 }
                 else {
                     push(vagoesQueEntraram, vagaoQueEstaEntrando);
+                    vagaoQueEstaEntrando++;
                 }
             }
 
-            if (empty(vagoesQueEntraram)) {
+            while (size(vagoesQueEntraram) > 0 && vagaoQueDeveSair == peek(vagoesQueEntraram)) {
+                pop(vagoesQueEntraram);
+
+                if (vagoesLidos < quantidadeDeVagoes) {
+                    scanf("%d", &vagaoQueDeveSair);
+                    vagoesLidos++;
+                }
+            }
+
+            if (size(vagoesQueEntraram) == 0) {
                 printf("Yes\n");
             }
             else {
                 printf("No\n");
+            }
+
+            while (vagoesLidos++ < quantidadeDeVagoes) {
+                scanf("%*d");
             }
         }
 
