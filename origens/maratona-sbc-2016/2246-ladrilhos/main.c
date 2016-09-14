@@ -16,7 +16,7 @@ int main (void) {
 
     for (i = 0; i < m; i++) {
         for (j = 0; j < n; j++) {
-            scanf("%d\n", &parede[i][j]);
+            scanf("%d", &parede[i][j]);
         }
     }
 
@@ -60,7 +60,6 @@ int buscarTamanhoDaSequencia(int parede[][TAMANHO_MAXIMO], int i, int j, int m, 
             + buscarTamanhoDaSequencia(parede, i, j + 1, m, n, cor)
             + buscarTamanhoDaSequencia(parede, i, j - 1, m, n, cor);
     }
-    else {
-        return 0;
-    }
+
+    return 0;
 }
