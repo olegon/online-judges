@@ -1,6 +1,9 @@
 /*
 Maratona de Programação da SBC - ACM ICPC - 2016
 Problema I
+
+Big Oh(N²)
+
 */
 
 #include <stdio.h>
