@@ -1,42 +1,54 @@
 #include <stdio.h>
 
+int analisarTrio(int a, int b, int c);
+
 int main (void) {
-    int tamanhoDaSequencia,
-        magnitude,
-        a, b, c,
-        total;
+    int tamanhoDaSequencia;
 
     while (scanf("%d", &tamanhoDaSequencia), tamanhoDaSequencia != 0) {
-        if (tamanhoDaSequencia == 2) {
-            scanf("%*d %*d");
-            printf("2\n");
-            continue;
-        }
+        int i,
+            a, b, c,
+            primeiro,
+            segundo,
+            picos = 0;
 
-        total = 1;
-        scanf("%d %d", &b, &c);
-        tamanhoDaSequencia -= 2;
+        for (i = 0; i < tamanhoDaSequencia; i++) {
+            scanf("%d\n", &c);
 
-        while (tamanhoDaSequencia-- > 0) {
-            scanf("%d", &magnitude);
+            if (i < 2) {
+                primeiro = b;
+                segundo = c;
+            }
+            else {
+                picos += analisarTrio(a, b, c);
+            }
 
             a = b;
             b = c;
-            c = magnitude;
-
-
-            if ((b >= a && b > c) || (b <= a && b < c)) {
-                total++;
-            }
-
-            printf("%d %d %d: %d\n", a, b, c, total);
         }
 
-        if ((a <= b && b > c) || (a >= b && b < c)) {
-            total++;
-        }
+        picos += analisarTrio(a, b, primeiro);
+        picos += analisarTrio(c, primeiro, segundo);
 
-        printf("%d\n\n\n", total);
+        printf("%d\n", picos);
+    }
+
+    return 0;
+}
+
+int analisarTrio(int a, int b, int c) {
+    // printf("(%d %d %d) -> %d\n", a, b, c, ((a > b && b <= c) || (a < b && b >= c) || (a == b && b != c)));
+
+    if (a > b && b <= c) {
+        return 1;
+    }
+
+    if (a < b && b >= c) {
+        return 1;
+    }
+
+    if (a == b && b != c) {
+        return 1;
     }
 
     return 0;
