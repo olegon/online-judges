@@ -20,16 +20,16 @@ int main (void) {
 void identarPrograma(const char *codigo) {
     int i = 0;
     int nivelIdentacao = 0;
-    int novaLinha = 1;
+    int novaLinha = 0;
 
     while (codigo[i] != '\0') {
         char caractere = codigo[i++];
 
         if (novaLinha) {
-            if (caractere == ' ') {
-                continue;
-            }
-            else if (caractere == '}') {
+            // if (caractere == ' ') {
+            //     continue;
+            // }
+            if (caractere == '}') {
                 putchar('\n');
                 imprimirIdentacao(--nivelIdentacao);
             }
