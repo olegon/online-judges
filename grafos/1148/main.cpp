@@ -9,7 +9,6 @@ using namespace std;
 #define CIDADE(n) ((n) - 1)
 
 void limparConexoes(int conexoes[][MAX_N], int N);
-int possuiConexaoDireta(int conexoes[][MAX_N], int o, int d);
 int calcularTempoDeEntrega(int conexoes[][MAX_N], int o, int d, int N);
 
 int main (void) {
@@ -67,37 +66,37 @@ void limparConexoes(int conexoes[][MAX_N], int N) {
 }
 
 int calcularTempoDeEntrega(int conexoes[][MAX_N], int o, int d, int N) {
-    if (conexoes[o][d] < INT_MAX) {
-        return conexoes[o][d];
+    if (conexoes[o][d] == 0) {
+        return 0;
     }
     else {
-        int cache[N];
-        int visited[N];
+        int dist[N];
+        bool visited[N];
 
         for (int i = 0; i < N; i++) {
-            cache[i] = INT_MAX;
-            visited[i] = 0;
+            dist[i] = INT_MAX;
+            visited[i] = false;
         }
 
         queue<int> nodes;
         nodes.push(o);
 
-        cache[o] = 0;
-        visited[o] = 1;
+        dist[o] = 0;
 
         while (!nodes.empty()) {
             int from = nodes.front();
             nodes.pop();
 
             for (int to = 0; to < N; to++) {
-                if (conexoes[from][to] < INT_MAX && !visited[to]) {
+                if (conexoes[from][to] < INT_MAX && !visited[to] && dist[from] + conexoes[from][to] < dist[to]) {
+                    dist[to] = dist[from] + conexoes[from][to];
                     nodes.push(to);
-                    visited[to] = 1;
                 }
             }
 
+            visited[from] = true;
         }
 
-        return INT_MAX;
+        return dist[d];
     }
 }

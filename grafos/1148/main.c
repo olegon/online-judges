@@ -91,8 +91,8 @@ int minDistance(int dist[], int visited[], int N) {
 }
 
 int calcularTempoDeEntrega(int conexoes[][MAX_N], int N, int o, int d) {
-    if (conexoes[o][d] < INT_MAX) {
-        return conexoes[o][d];
+    if (conexoes[o][d] == 0) {
+        return 0;
     }
     else {
         int dist[N],
