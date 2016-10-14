@@ -14,7 +14,8 @@ typedef struct {
 
 void limparConexoes(int conexoes[][MAX_N], int N);
 int possuiConexaoDireta(int conexoes[][MAX_N], int o, int d);
-int calcularTempoDeEntrega(int conexoes[][MAX_N], int o, int d);
+int minDistance(int dist[], int visited[], int N);
+int calcularTempoDeEntrega(int conexoes[][MAX_N], int N, int o, int d);
 
 int main (void) {
     int N, E,
@@ -45,7 +46,7 @@ int main (void) {
         for (i = 0; i < K; i++) {
             scanf("%d %d", &O, &D);
 
-            int tempoParaSerEntregue = calcularTempoDeEntrega(conexoes, CIDADE(O), CIDADE(D));
+            int tempoParaSerEntregue = calcularTempoDeEntrega(conexoes, N, CIDADE(O), CIDADE(D));
 
             if (tempoParaSerEntregue == 0) {
                 printf("0\n");
@@ -54,7 +55,7 @@ int main (void) {
                 printf("Nao e possivel entregar a carta\n");
             }
             else {
-                printf("?\n");
+                printf("%d\n", tempoParaSerEntregue);
             }
         }
 
@@ -74,20 +75,53 @@ void limparConexoes(int conexoes[][MAX_N], int N) {
     }
 }
 
-int calcularTempoDeEntrega(int conexoes[][MAX_N], int o, int d) {
+int minDistance(int dist[], int visited[], int N) {
+    int min = INT_MAX,
+        min_index,
+        v;
+
+    for (v = 0; v < N; v++) {
+        if (visited[v] == 0 && dist[v] <= min) {
+            min = dist[v];
+            min_index = v;
+        }
+    }
+
+    return min_index;
+}
+
+int calcularTempoDeEntrega(int conexoes[][MAX_N], int N, int o, int d) {
     if (conexoes[o][d] < INT_MAX) {
         return conexoes[o][d];
     }
     else {
-        int cache[MAX_N],
+        int dist[N],
+            visited[N],
             i;
 
-        for (i = 0; i < MAX_N; i++) {
-            cache[i] = INT_MAX;
+        for (i = 0; i < N; i++) {
+            dist[i] = INT_MAX;
+            visited[i] = 0;
         }
 
+        dist[o] = 0;
 
+        for (i = 0; i < N - 1; i++) {
+            int u, v;
 
-        return INT_MAX;
+            u = minDistance(dist, visited, N);
+
+            visited[u] = 1;
+
+            for (v = 0; v < N; v++) {
+                if (!visited[v]
+                    && conexoes[u][v] != INT_MAX
+                    && dist[u] != INT_MAX
+                    && dist[u] + conexoes[u][v] < dist[v])
+                   dist[v] = dist[u] + conexoes[u][v];
+            }
+        }
+
+        return dist[d];
     }
 }

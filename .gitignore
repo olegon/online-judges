@@ -1,6 +1,9 @@
 # Executáveis
-a.out
-a.exe
+*.out
+*.exe
+
+# Objetos
+*.o
 
 # Temporários
 *~
