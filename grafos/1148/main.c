@@ -5,17 +5,9 @@
 
 #define CIDADE(n) ((n) - 1)
 
-typedef struct {
-    int VALUES[MAX_N];
-    int capacity;
-    int head;
-    int tail;
-} FILA;
-
 void limparConexoes(int conexoes[][MAX_N], int N);
-int possuiConexaoDireta(int conexoes[][MAX_N], int o, int d);
-int minDistance(int dist[], int visited[], int N);
-int calcularTempoDeEntrega(int conexoes[][MAX_N], int N, int o, int d);
+int obterNoComMenorDistancia(int distancia[], int visitado[], int N);
+int calcularTempoDeEntrega(int conexoes[][MAX_N], int N, int origem, int destino);
 
 int main (void) {
     int N, E,
@@ -75,53 +67,53 @@ void limparConexoes(int conexoes[][MAX_N], int N) {
     }
 }
 
-int minDistance(int dist[], int visited[], int N) {
-    int min = INT_MAX,
-        min_index,
-        v;
+int obterNoComMenorDistancia(int distancia[], int visitado[], int N) {
+    int menorDistancia = INT_MAX,
+        noDaMenorDistancia = 0,
+        no;
 
-    for (v = 0; v < N; v++) {
-        if (visited[v] == 0 && dist[v] <= min) {
-            min = dist[v];
-            min_index = v;
+    for (no = 0; no < N; no++) {
+        if (!visitado[no] && distancia[no] <= menorDistancia) {
+            menorDistancia = distancia[no];
+            noDaMenorDistancia = no;
         }
     }
 
-    return min_index;
+    return noDaMenorDistancia;
 }
 
-int calcularTempoDeEntrega(int conexoes[][MAX_N], int N, int o, int d) {
-    if (conexoes[o][d] == 0) {
+int calcularTempoDeEntrega(int conexoes[][MAX_N], int N, int origem, int destino) {
+    if (conexoes[origem][destino] == 0) {
         return 0;
     }
     else {
-        int dist[N],
-            visited[N],
+        int distancia[N],
+            visitado[N],
             i;
 
         for (i = 0; i < N; i++) {
-            dist[i] = INT_MAX;
-            visited[i] = 0;
+            distancia[i] = INT_MAX;
+            visitado[i] = 0;
         }
 
-        dist[o] = 0;
+        distancia[origem] = 0;
 
         for (i = 0; i < N - 1; i++) {
-            int u, v;
+            int noOrigem, noDestino;
 
-            u = minDistance(dist, visited, N);
+            noOrigem = obterNoComMenorDistancia(distancia, visitado, N);
 
-            visited[u] = 1;
+            visitado[noOrigem] = 1;
 
-            for (v = 0; v < N; v++) {
-                if (!visited[v]
-                    && conexoes[u][v] != INT_MAX
-                    && dist[u] != INT_MAX
-                    && dist[u] + conexoes[u][v] < dist[v])
-                   dist[v] = dist[u] + conexoes[u][v];
+            for (noDestino = 0; noDestino < N; noDestino++) {
+                if (!visitado[noDestino]
+                    && conexoes[noOrigem][noDestino] != INT_MAX // há caminho
+                    && distancia[noOrigem] != INT_MAX // há um caminho que vai até a origem
+                    && distancia[noOrigem] + conexoes[noOrigem][noDestino] < distancia[noDestino])  // esse novo caminho "pesa" menos
+                   distancia[noDestino] = distancia[noOrigem] + conexoes[noOrigem][noDestino];
             }
         }
 
-        return dist[d];
+        return distancia[destino];
     }
 }

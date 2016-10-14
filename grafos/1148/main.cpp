@@ -70,33 +70,33 @@ int calcularTempoDeEntrega(int conexoes[][MAX_N], int o, int d, int N) {
         return 0;
     }
     else {
-        int dist[N];
-        bool visited[N];
+        int distancia[N];
+        bool visitado[N];
 
         for (int i = 0; i < N; i++) {
-            dist[i] = INT_MAX;
-            visited[i] = false;
+        distancia[i] = INT_MAX;
+            visitado[i] = false;
         }
 
-        queue<int> nodes;
+        priority_queue<int> nodes;
         nodes.push(o);
 
-        dist[o] = 0;
+        distancia[o] = 0;
 
         while (!nodes.empty()) {
-            int from = nodes.front();
+            int from = nodes.top();
             nodes.pop();
 
+            visitado[from] = true;
+
             for (int to = 0; to < N; to++) {
-                if (conexoes[from][to] < INT_MAX && !visited[to] && dist[from] + conexoes[from][to] < dist[to]) {
-                    dist[to] = dist[from] + conexoes[from][to];
+                if (conexoes[from][to] < INT_MAX && !visitado[to] && distancia[from] + conexoes[from][to] < distancia[to]) {
+                    distancia[to] = distancia[from] + conexoes[from][to];
                     nodes.push(to);
                 }
             }
-
-            visited[from] = true;
         }
 
-        return dist[d];
+        return distancia[d];
     }
 }
