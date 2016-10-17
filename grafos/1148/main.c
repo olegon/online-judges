@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <limits.h>
 
 #define MAX_N 500
@@ -6,8 +7,10 @@
 #define CIDADE(n) ((n) - 1)
 
 void limparConexoes(int conexoes[][MAX_N], int N);
-int obterNoComMenorDistancia(int distancia[], int visitado[], int N);
+int obterNoComMenorDistancia(int *distancia, int *visitado, int N);
 int calcularTempoDeEntrega(int conexoes[][MAX_N], int N, int origem, int destino);
+
+int *cache[MAX_N];
 
 int main (void) {
     int N, E,
@@ -21,6 +24,13 @@ int main (void) {
         int i;
 
         limparConexoes(conexoes, N);
+
+        for (i = 0; i < N; i++) {
+            if (cache[i] != NULL) {
+                free(cache[i]);
+                cache[i] = NULL;
+            }
+        }
 
         for (i = 0; i < E; i++) {
             scanf("%d %d %d", &X, &Y, &H);
@@ -67,51 +77,59 @@ void limparConexoes(int conexoes[][MAX_N], int N) {
     }
 }
 
-int obterNoComMenorDistancia(int distancia[], int visitado[], int N) {
-    int menorDistancia = INT_MAX,
-        noDaMenorDistancia = 0,
-        no;
+int obterNoComMenorDistancia(int *distancia, int *visitado, int N) {
+    int i,
+        menorIndice = 0,
+        menorValor = INT_MAX;
 
-    for (no = 0; no < N; no++) {
-        if (!visitado[no] && distancia[no] <= menorDistancia) {
-            menorDistancia = distancia[no];
-            noDaMenorDistancia = no;
-        }
+    for (i = 0; i < N; i++) {
+      if (distancia[i] < menorValor && !visitado[i]) {
+        menorIndice = i;
+        menorValor = distancia[i];
+      }
     }
 
-    return noDaMenorDistancia;
+    return menorIndice;
 }
+
+
 
 int calcularTempoDeEntrega(int conexoes[][MAX_N], int N, int origem, int destino) {
     if (conexoes[origem][destino] == 0) {
         return 0;
     }
+    else if (cache[origem] != NULL) {
+        return cache[origem][destino];
+    }
     else {
-        int distancia[N],
-            visitado[N],
-            i;
+        int i;
+
+        int visitado[N];
+        int *distancia = malloc(sizeof(int) * N);
+
+        cache[origem] = distancia;
 
         for (i = 0; i < N; i++) {
-            distancia[i] = INT_MAX;
-            visitado[i] = 0;
+          visitado[i] = 0;
+          distancia[i] = INT_MAX;
         }
 
         distancia[origem] = 0;
 
         for (i = 0; i < N - 1; i++) {
-            int noOrigem, noDestino;
+          int noDestino,
+              noOrigem = obterNoComMenorDistancia(distancia, visitado, N);
 
-            noOrigem = obterNoComMenorDistancia(distancia, visitado, N);
+          visitado[noOrigem] = 1;
 
-            visitado[noOrigem] = 1;
-
-            for (noDestino = 0; noDestino < N; noDestino++) {
-                if (!visitado[noDestino]
-                    && conexoes[noOrigem][noDestino] != INT_MAX // há caminho
-                    && distancia[noOrigem] != INT_MAX // há um caminho que vai até a origem
-                    && distancia[noOrigem] + conexoes[noOrigem][noDestino] < distancia[noDestino])  // esse novo caminho "pesa" menos
-                   distancia[noDestino] = distancia[noOrigem] + conexoes[noOrigem][noDestino];
-            }
+          for (noDestino = 0; noDestino < N; noDestino++) {
+            if (!visitado[noDestino]
+                && distancia[noOrigem] < INT_MAX
+                && conexoes[noOrigem][noDestino] < INT_MAX
+                && distancia[noOrigem] + conexoes[noOrigem][noDestino] < distancia[noDestino]) {
+                  distancia[noDestino] = distancia[noOrigem] + conexoes[noOrigem][noDestino];
+                }
+          }
         }
 
         return distancia[destino];
