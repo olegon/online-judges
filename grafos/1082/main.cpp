@@ -9,6 +9,7 @@ private:
     int N;
 public:
     UF(int N);
+    ~UF();
     void connect(char a, char b);
     void show(void);
 };
@@ -56,6 +57,10 @@ UF::UF(int N) {
     for (int i = 0; i < N; i++) {
         this->V[i] = 'a' + i;
     }
+}
+
+UF::~UF() {
+    delete[] this->V;
 }
 
 void UF::connect(char a, char b) {
