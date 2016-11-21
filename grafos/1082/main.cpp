@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
@@ -65,6 +64,11 @@ void UF::connect(char a, char b) {
 
     if (a_value == b_value) return;
 
+    if (b_value < a_value) {
+        this->connect(b, a);
+        return;
+    }
+
     for (int i = 0; i < this->N; i++) {
         if (this->V[i] == b_value) this->V[i] = a_value;
     }
@@ -76,17 +80,6 @@ void UF::show(void) {
     for (int i = 0; i < this->N; i++) {
         components[this->V[i] - 'a'].push_back(char(i + 'a'));
     }
-
-    for (int i = 0; i < this->N; i++) {
-        sort(components[i].begin(), components[i].end());
-    }
-
-    sort(components, components + this->N, [](const vector<char> &a, const vector<char> &b) -> bool {
-        if (a.size() > 0 && b.size() > 0) return a[0] < b[0];
-        else if (a.size() > 0 && b.size() == 0) return true;
-        else if (a.size() == 0 && b.size() > 0) return false;
-        else return false;
-    } );
 
     int connectedComponents = 0;
     for (int i = 0; i < this->N; i++) {
