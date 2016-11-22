@@ -70,8 +70,9 @@ void UF::connect(char a, char b) {
     if (a_value == b_value) return;
 
     if (b_value < a_value) {
-        this->connect(b, a);
-        return;
+        char aux_value = a_value;
+        a_value = b_value;
+        b_value = aux_value;
     }
 
     for (int i = 0; i < this->N; i++) {
