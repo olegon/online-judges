@@ -7,6 +7,7 @@ class UF {
 private:
     char *V;
     int N;
+    int connectedComponents;
 public:
     UF(int N);
     ~UF();
@@ -52,6 +53,7 @@ int main(void) {
 
 UF::UF(int N) {
     this->N = N;
+    this->connectedComponents = N;
     this->V = new char[this->N];
 
     for (int i = 0; i < N; i++) {
@@ -75,6 +77,8 @@ void UF::connect(char a, char b) {
         b_value = aux_value;
     }
 
+    this->connectedComponents--;
+
     for (int i = 0; i < this->N; i++) {
         if (this->V[i] == b_value) this->V[i] = a_value;
     }
@@ -87,16 +91,14 @@ void UF::show(void) {
         components[this->V[i] - 'a'].push_back(char(i + 'a'));
     }
 
-    int connectedComponents = 0;
     for (int i = 0; i < this->N; i++) {
         if (components[i].size() > 0) {
-            connectedComponents++;
-            for (int j = 0; j < components[i].size(); j++) {
+            for (size_t j = 0; j < components[i].size(); j++) {
                 cout << components[i][j] << ',';
             }
             cout << '\n';
         }
     }
 
-    cout << connectedComponents << " connected components\n";
+    cout << this->connectedComponents << " connected components\n";
 }
