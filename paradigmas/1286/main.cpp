@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <utility>
+#include <map>
 
 using namespace std;
 
@@ -9,6 +10,7 @@ typedef pair<int, int> ii;
 
 int greedy_knapsack(vector<ii> &v, size_t i, int capacity);
 int knapsack(vector<ii> &v, size_t i, int capacity);
+int knapsack_memo(vector<ii> &v, size_t i, int capacity, map<ii, int> &memo);
 int dp_knapsack(vector<ii> &v, int capacity);
 
 inline int obter_valor(ii &p) {
@@ -44,7 +46,11 @@ int main(void) {
         });
 
         // int min = greedy_knapsack(pedidos, 0, P);
+
         int min = dp_knapsack(pedidos, P);
+        //
+        // map<ii, int> memo;
+        // int min = knapsack_memo(pedidos, 0, P, memo);
 
         cout << min << " min.\n";
     }
@@ -73,6 +79,26 @@ int knapsack(vector<ii> &v, size_t i, int capacity) {
             return max(take, noTake);
         }
         else return knapsack(v, i + 1, capacity);
+    }
+    else return 0;
+}
+
+int knapsack_memo(vector<ii> &v, size_t i, int capacity, map<ii, int> &memo) {
+    if (i < v.size()) {
+        map<ii, int>::iterator it = memo.find(ii(i, capacity));
+        if (it != memo.end()) {
+            return it->second;
+        }
+
+        if (v[i].second <= capacity) {
+            int take = v[i].first + knapsack_memo(v, i + 1, capacity - v[i].second, memo);
+            int noTake = knapsack_memo(v, i + 1, capacity, memo);
+
+            memo.insert(pair<ii, int>(ii(i, capacity), max(take, noTake)));
+
+            return max(take, noTake);
+        }
+        else return knapsack_memo(v, i + 1, capacity, memo);
     }
     else return 0;
 }
