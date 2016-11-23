@@ -9,6 +9,15 @@ typedef pair<int, int> ii;
 
 int greedy_knapsack(vector<ii> &v, size_t i, int capacity);
 int knapsack(vector<ii> &v, size_t i, int capacity);
+int dp_knapsack(vector<ii> &v, int capacity);
+
+inline int obter_valor(ii &p) {
+    return p.first;
+}
+
+inline int obter_peso(ii &p) {
+    return p.second;
+}
 
 int main(void) {
     ios::sync_with_stdio(false);
@@ -35,7 +44,7 @@ int main(void) {
         });
 
         // int min = greedy_knapsack(pedidos, 0, P);
-        int min = knapsack(pedidos, 0, P);
+        int min = dp_knapsack(pedidos, P);
 
         cout << min << " min.\n";
     }
@@ -66,4 +75,27 @@ int knapsack(vector<ii> &v, size_t i, int capacity) {
         else return knapsack(v, i + 1, capacity);
     }
     else return 0;
+}
+
+int dp_knapsack(vector<ii> &v, int capacity) {
+    int dp[v.size() + 1][capacity + 1];
+
+    // for all items
+    for (size_t i = 0; i <= v.size(); i++) {
+        // for all capacities
+        for (int j = 0; j <= capacity; j++) {
+            if (i == 0 || j == 0) {
+                dp[i][j] = 0; /* Valor = 0 ou Peso <= 0*/
+            }
+            else if(j - obter_peso(v[i - 1]) >= 0) { /* O item cabe atual cabe na mochila? */
+                dp[i][j] = max(dp[i - 1][j], /* melhor solução já encontrada */
+                               dp[i - 1][j - obter_peso(v[i - 1])] /* melhor valor, menos o peso atual */ + obter_valor(v[i - 1]) /* mais o valor atual */);
+            }
+            else { /* Caso não couber, então a melhor solução é a anterior. */
+                dp[i][j] = dp[i - 1][j];
+            }
+        }
+    }
+
+    return dp[v.size()][capacity];
 }
