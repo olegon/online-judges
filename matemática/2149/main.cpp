@@ -11,16 +11,11 @@ int main(void) {
 
     sequencia[1] = 0;
     sequencia[2] = 1;
-    sequencia[3] = 1;
 
     // DP
-    for (int i = 4; i <= MAX_NUM; i++) {
-        if (i % 2 == 0) {
-            sequencia[i] = sequencia[i - 2] * sequencia[i - 1];
-        }
-        else {
-            sequencia[i] = sequencia[i - 2] + sequencia[i - 1];
-        }
+    for (int i = 3; i <= MAX_NUM; i++) {
+        if (i % 2 == 0) sequencia[i] = sequencia[i - 2] * sequencia[i - 1];
+        else sequencia[i] = sequencia[i - 2] + sequencia[i - 1];
     }
 
     int N;
