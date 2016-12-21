@@ -3,14 +3,14 @@
 
 using namespace std;
 
-class UF {
+class QuickFind {
 private:
     int *V;
     int N;
     int connectedComponents;
 public:
-    UF(int N);
-    ~UF();
+    QuickFind(int N);
+    ~QuickFind();
     void connect(int a, int b);
     void show(void);
 };
@@ -29,7 +29,7 @@ int main(void) {
         cin >> V >> E;
         cin.ignore();
 
-        UF uf(V);
+        QuickFind uf(V);
 
         for (int j = 0; j < E; j++) {
             char a, b;
@@ -51,7 +51,7 @@ int main(void) {
     return 0;
 }
 
-UF::UF(int N) {
+QuickFind::QuickFind(int N) {
     this->N = N;
     this->connectedComponents = N;
     this->V = new int[this->N];
@@ -61,11 +61,11 @@ UF::UF(int N) {
     }
 }
 
-UF::~UF() {
+QuickFind::~QuickFind() {
     delete[] this->V;
 }
 
-void UF::connect(int a, int b) {
+void QuickFind::connect(int a, int b) {
     int a_value = this->V[a];
     int b_value = this->V[b];
 
@@ -84,7 +84,7 @@ void UF::connect(int a, int b) {
     }
 }
 
-void UF::show(void) {
+void QuickFind::show(void) {
     vector<int> components[this->N];
 
     for (int i = 0; i < this->N; i++) {
