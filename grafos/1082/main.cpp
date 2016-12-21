@@ -5,13 +5,13 @@ using namespace std;
 
 class UF {
 private:
-    char *V;
+    int *V;
     int N;
     int connectedComponents;
 public:
     UF(int N);
     ~UF();
-    void connect(char a, char b);
+    void connect(int a, int b);
     void show(void);
 };
 
@@ -40,7 +40,7 @@ int main(void) {
             cin >> b;
             cin.ignore();
 
-            uf.connect(a, b);
+            uf.connect(a - 'a', b - 'a');
         }
 
         cout << "Case #" << i << ":\n";
@@ -54,10 +54,10 @@ int main(void) {
 UF::UF(int N) {
     this->N = N;
     this->connectedComponents = N;
-    this->V = new char[this->N];
+    this->V = new int[this->N];
 
     for (int i = 0; i < N; i++) {
-        this->V[i] = 'a' + i;
+        this->V[i] = i;
     }
 }
 
@@ -65,14 +65,14 @@ UF::~UF() {
     delete[] this->V;
 }
 
-void UF::connect(char a, char b) {
-    char a_value = this->V[a - 'a'];
-    char b_value = this->V[b - 'a'];
+void UF::connect(int a, int b) {
+    int a_value = this->V[a];
+    int b_value = this->V[b];
 
     if (a_value == b_value) return;
 
     if (b_value < a_value) {
-        char aux_value = a_value;
+        int aux_value = a_value;
         a_value = b_value;
         b_value = aux_value;
     }
@@ -85,16 +85,16 @@ void UF::connect(char a, char b) {
 }
 
 void UF::show(void) {
-    vector<char> components[this->N];
+    vector<int> components[this->N];
 
     for (int i = 0; i < this->N; i++) {
-        components[this->V[i] - 'a'].push_back(char(i + 'a'));
+        components[this->V[i]].push_back(i);
     }
 
     for (int i = 0; i < this->N; i++) {
         if (components[i].size() > 0) {
             for (size_t j = 0; j < components[i].size(); j++) {
-                cout << components[i][j] << ',';
+                cout << char(components[i][j] + 'a') << ',';
             }
             cout << '\n';
         }
