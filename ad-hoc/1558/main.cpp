@@ -1,3 +1,8 @@
+/*
+Soma de Dois Quadrados
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1558
+*/
+
 #include <iostream>
 #include <vector>
 #include <algorithm>

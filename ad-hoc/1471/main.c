@@ -1,3 +1,8 @@
+/*
+Mergulho
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1471
+*/
+
 #include <stdio.h>
 
 #define QUANTIDADE_MERGULHADORES 10001

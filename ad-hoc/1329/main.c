@@ -1,3 +1,8 @@
+/*
+Cara ou Coroa
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1329
+*/
+
 #include <stdio.h>
 
 int main (void) {

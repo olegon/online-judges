@@ -1,3 +1,8 @@
+/*
+Estiagem
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1023
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>

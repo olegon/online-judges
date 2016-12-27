@@ -1,3 +1,8 @@
+/*
+Conversa Internacional
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1581
+*/
+
 #include <iostream>
 #include <string>
 

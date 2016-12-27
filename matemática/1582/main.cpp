@@ -1,3 +1,8 @@
+/*
+O Teorema de Pitágoras
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1582
+*/
+
 #include <iostream>
 #include <algorithm>
 #include <cmath>

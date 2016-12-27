@@ -1,3 +1,8 @@
+/*
+O Bravo Guerreiro Hashmat
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1198
+*/
+
 #include <stdio.h>
 
 unsigned long long int diferenca(unsigned long long int a, unsigned long long int b);

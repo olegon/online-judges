@@ -1,3 +1,8 @@
+/*
+Libertadores
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1536
+*/
+
 #include <stdio.h>
 
 void aplicarRegrasDoMataMata(int golsDoPrimeiroTimeNaIda, int golsDoSegundoTimeNaIda, int golsDoPrimeiroTimeNaVolta, int golsDoSegundoTimeNaVolta);

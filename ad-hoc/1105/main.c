@@ -1,3 +1,8 @@
+/*
+Sub-prime
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1105
+*/
+
 #include <stdio.h>
 
 #define MAXIMO_DE_BANCOS 20

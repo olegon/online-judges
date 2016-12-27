@@ -1,3 +1,8 @@
+/*
+De Dentro para Fora
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1235
+*/
+
 #include <stdio.h>
 #include <string.h>
 

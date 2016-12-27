@@ -1,3 +1,8 @@
+/*
+Array Hash
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1257
+*/
+
 #include <stdio.h>
 
 #define POSICAO_DA_LETRA(c) ((c) - 'A')

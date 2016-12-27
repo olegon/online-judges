@@ -1,3 +1,8 @@
+/*
+Competição
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1514
+*/
+
 #include <stdio.h>
 
 #define NUMERO_MAXIMO_DE_PESSSOAS 128

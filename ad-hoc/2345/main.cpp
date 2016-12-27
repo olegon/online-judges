@@ -1,3 +1,8 @@
+/*
+Assigning Teams
+https://www.urionlinejudge.com.br/judge/pt/problems/view/2345
+*/
+
 #include <iostream>
 #include <vector>
 #include <algorithm>

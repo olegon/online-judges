@@ -1,3 +1,8 @@
+/*
+Soma de Impares Consecutivos I
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1071
+*/
+
 #include <stdio.h>
 
 int main (void) {

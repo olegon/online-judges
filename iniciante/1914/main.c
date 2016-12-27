@@ -1,3 +1,8 @@
+/*
+De Quem é a Vez?
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1914
+*/
+
 #include <stdio.h>
 
 #define NOME_SIZE   128

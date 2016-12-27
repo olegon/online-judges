@@ -1,3 +1,8 @@
+/*
+O Enigma do Pronalândia
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1984
+*/
+
 #include <stdio.h>
 
 void imprimirInverso(const char *str);

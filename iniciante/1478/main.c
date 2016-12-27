@@ -1,3 +1,8 @@
+/*
+Matriz Quadrada II
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1478
+*/
+
 #include <stdio.h>
 
 #define LINHAS 128

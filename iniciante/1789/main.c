@@ -1,3 +1,8 @@
+/*
+A Corrida de Lesmas
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1789
+*/
+
 #include <stdio.h>
 
 #define MAX(a, b) ((a) > (b) ? (a) : (b))

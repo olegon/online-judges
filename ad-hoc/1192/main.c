@@ -1,3 +1,8 @@
+/*
+O jogo Matemático de Paula
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1192
+*/
+
 #include <stdio.h>
 
 #define maiuscula(c) ((c) >= 'A' && (c) <= 'Z')

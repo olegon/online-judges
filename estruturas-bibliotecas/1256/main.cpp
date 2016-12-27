@@ -1,3 +1,8 @@
+/*
+Tabelas Hash
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1256
+*/
+
 #include <iostream>
 #include <vector>
 

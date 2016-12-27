@@ -1,3 +1,8 @@
+/*
+Resto da Divisão
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1133
+*/
+
 #include <stdio.h>
 
 #define MIN(a,b) ((a) < (b) ? (a) : (b))

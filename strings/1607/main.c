@@ -1,3 +1,8 @@
+/*
+Avance as Letras
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1607
+*/
+
 #include <stdio.h>
 
 #define MAX_LENGTH 10001

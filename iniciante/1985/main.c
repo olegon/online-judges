@@ -1,3 +1,8 @@
+/*
+MacPRONALTS
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1985
+*/
+
 #include <stdio.h>
 
 double obterValor(int codigo);

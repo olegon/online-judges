@@ -1,3 +1,8 @@
+/*
+Idades
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1154
+*/
+
 #include <stdio.h>
 
 int main (void) {

@@ -1,3 +1,8 @@
+/*
+A Lenda de Flavious Josephus
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1030
+*/
+
 #include <stdio.h>
 
 #define SIZE 10000

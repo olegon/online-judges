@@ -1,3 +1,8 @@
+/*
+Loop Musical
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1089
+*/
+
 #include <stdio.h>
 
 int analisarTrio(int a, int b, int c);

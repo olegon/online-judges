@@ -1,3 +1,8 @@
+/*
+Positivos e Média
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1064
+*/
+
 #include <stdio.h>
 
 int main (void) {

@@ -1,3 +1,8 @@
+/*
+Soma de Fatoriais
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1161
+*/
+
 #include <stdio.h>
 #include <math.h>
 

@@ -1,3 +1,8 @@
+/*
+Máquina de Verificação Automatizada
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1743
+*/
+
 #include <stdio.h>
 
 #define PINOS 5

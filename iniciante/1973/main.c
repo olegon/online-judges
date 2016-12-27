@@ -1,3 +1,8 @@
+/*
+Jornada nas Estrelas
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1973
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

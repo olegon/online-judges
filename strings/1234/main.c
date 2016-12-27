@@ -1,3 +1,8 @@
+/*
+Sentença Dançante
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1234
+*/
+
 #include <stdio.h>
 
 #define isUppercase(c) ((c) >= 'A' && (c) <= 'Z')

@@ -1,3 +1,8 @@
+/*
+Conversão Simples de Base
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1199
+*/
+
 #include <stdio.h>
 
 #define STR_SIZE 64

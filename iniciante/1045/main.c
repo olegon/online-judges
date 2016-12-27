@@ -1,3 +1,8 @@
+/*
+Tipos de Triângulos
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1045
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

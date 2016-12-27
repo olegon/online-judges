@@ -1,3 +1,8 @@
+/*
+Procurando Subsequências
+https://www.urionlinejudge.com.br/judge/pt/problems/view/2126
+*/
+
 #include <stdio.h>
 #include <string.h>
 

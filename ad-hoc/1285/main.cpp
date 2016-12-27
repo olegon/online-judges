@@ -1,3 +1,8 @@
+/*
+Dígitos Diferentes
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1285
+*/
+
 #include <iostream>
 #include <set>
 #include <vector>

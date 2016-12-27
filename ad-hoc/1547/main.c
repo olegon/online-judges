@@ -1,3 +1,8 @@
+/*
+Adivinha
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1547
+*/
+
 #include <stdio.h>
 
 #define ABS(n) ((n) < 0 ? -(n) : (n))

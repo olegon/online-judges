@@ -1,3 +1,8 @@
+/*
+Flores de Fogo
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1039
+*/
+
 #include <stdio.h>
 #include <math.h>
 

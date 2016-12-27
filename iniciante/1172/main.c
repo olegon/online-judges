@@ -1,3 +1,8 @@
+/*
+Substituição em Vetor I
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1172
+*/
+
 #include <stdio.h>
 
 int main (void) {

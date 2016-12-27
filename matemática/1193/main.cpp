@@ -1,3 +1,8 @@
+/*
+Conversão entre Bases
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1193
+*/
+
 #include <iostream>
 #include <string>
 #include <cmath>

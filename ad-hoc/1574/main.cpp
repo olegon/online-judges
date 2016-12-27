@@ -1,3 +1,8 @@
+/*
+Instruções do Robô
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1574
+*/
+
 #include <cstdio>
 #include <cstring>
 

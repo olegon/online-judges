@@ -1,3 +1,8 @@
+/*
+Países em Guerra
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1148
+*/
+
 #include <iostream>
 #include <climits>
 #include <queue>

@@ -1,3 +1,8 @@
+/*
+Blobs
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1170
+*/
+
 #include <stdio.h>
 #include <math.h>
 

@@ -1,3 +1,8 @@
+/*
+Cédulas
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1018
+*/
+
 #include <stdio.h>
 
 int main (void) {

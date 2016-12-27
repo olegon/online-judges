@@ -1,3 +1,8 @@
+/*
+Divisão da Nlogônia
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1091
+*/
+
 #include <stdio.h>
 
 void imprimirRegiao(int x, int y);

@@ -1,3 +1,8 @@
+/*
+Pedra, Papel, Ataque Aéreo
+https://www.urionlinejudge.com.br/judge/pt/problems/view/2031
+*/
+
 #include <stdio.h>
 #include <string.h>
 

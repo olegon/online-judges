@@ -1,3 +1,8 @@
+/*
+Guilherme e Suas Pipas
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1921
+*/
+
 #include <stdio.h>
 
 // diagonais = (lados * (lados - 3)) / 2;

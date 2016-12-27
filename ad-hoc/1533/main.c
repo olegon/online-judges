@@ -1,3 +1,8 @@
+/*
+Detetive Watson
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1533
+*/
+
 #include <stdio.h>
 
 #define QUANTIDADE_MAXIMA_DE_SUSPEITOS 10000

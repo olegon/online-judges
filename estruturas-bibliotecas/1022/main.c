@@ -1,3 +1,8 @@
+/*
+TDA Racional
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1022
+*/
+
 #include <stdio.h>
 
 void sum(int n1, int d1, int n2, int d2);

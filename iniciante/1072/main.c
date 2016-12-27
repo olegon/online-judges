@@ -1,3 +1,8 @@
+/*
+Intervalo 2
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1072
+*/
+
 #include <stdio.h>
 
 #define MENOR 10

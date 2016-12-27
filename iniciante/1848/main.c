@@ -1,3 +1,8 @@
+/*
+Corvo Contador
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1848
+*/
+
 #include <stdio.h>
 
 #define STRING_SIZE 16

@@ -1,3 +1,8 @@
+/*
+Abaixo da Diagonal Principal
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1184
+*/
+
 #include <stdio.h>
 
 #define LINHAS 12

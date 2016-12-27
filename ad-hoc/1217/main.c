@@ -1,3 +1,8 @@
+/*
+Getline Two - Frutas
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1217
+*/
+
 #include <stdio.h>
 
 #define STRING_SIZE 1024

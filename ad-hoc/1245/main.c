@@ -1,3 +1,8 @@
+/*
+Botas Perdidas
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1245
+*/
+
 #include <stdio.h>
 
 #define DIREITO     'D'

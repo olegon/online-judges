@@ -1,3 +1,8 @@
+/*
+Comparação de Substring
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1237
+*/
+
 #include <iostream>
 #include <string>
 #include <cstring>

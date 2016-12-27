@@ -1,3 +1,8 @@
+/*
+Mjölnir
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1865
+*/
+
 #include <stdio.h>
 #include <string.h>
 

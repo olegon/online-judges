@@ -1,3 +1,8 @@
+/*
+Pares, Ímpares, Positivos e Negativos
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1066
+*/
+
 #include <stdio.h>
 
 int main (void) {

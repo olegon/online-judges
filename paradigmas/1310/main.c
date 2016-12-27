@@ -1,3 +1,8 @@
+/*
+Lucro
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1310
+*/
+
 #include <stdio.h>
 
 #define MAXIMO_DE_DIAS 50

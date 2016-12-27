@@ -1,3 +1,8 @@
+/*
+Figurinhas
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1028
+*/
+
 #include <stdio.h>
 
 int euclidianMDC(int a, int b);

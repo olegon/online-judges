@@ -1,3 +1,8 @@
+/*
+Triângulo
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1043
+*/
+
 #include <stdio.h>
 
 int isTriangulo(double a, double b, double c);

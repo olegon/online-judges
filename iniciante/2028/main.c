@@ -1,3 +1,8 @@
+/*
+Sequência de Sequência
+https://www.urionlinejudge.com.br/judge/pt/problems/view/2028
+*/
+
 #include <stdio.h>
 
 int tamanhoDaSequencia(int numero);

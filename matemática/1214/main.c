@@ -1,3 +1,8 @@
+/*
+Acima da Média
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1214
+*/
+
 #include <stdio.h>
 
 #define QUANTIDADE_MAXIMA_DE_ALUNOS 1024

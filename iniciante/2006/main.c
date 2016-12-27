@@ -1,3 +1,8 @@
+/*
+Identificando o Chá
+https://www.urionlinejudge.com.br/judge/pt/problems/view/2006
+*/
+
 #include <stdio.h>
 
 #define QUANTIDADE_DE_CHAS 5

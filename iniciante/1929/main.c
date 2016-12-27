@@ -1,3 +1,8 @@
+/*
+Triângulo
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1929
+*/
+
 #include <stdio.h>
 
 int formaTriangulo(int a, int b, int c);

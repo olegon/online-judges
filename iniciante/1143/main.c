@@ -1,3 +1,8 @@
+/*
+Quadrado e ao Cubo
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1143
+*/
+
 #include <stdio.h>
 
 int main (void) {

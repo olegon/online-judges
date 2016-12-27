@@ -1,3 +1,8 @@
+/*
+Imposto de Renda
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1051
+*/
+
 #include <stdio.h>
 
 double calcularIR(double salario);

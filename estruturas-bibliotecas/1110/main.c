@@ -1,3 +1,8 @@
+/*
+Jogando Cartas Fora
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1110
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

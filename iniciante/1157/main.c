@@ -1,3 +1,8 @@
+/*
+Divisores I
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1157
+*/
+
 #include <stdio.h>
 
 void imprimirDivisores(int n);

@@ -1,3 +1,8 @@
+/*
+Combinador
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1238
+*/
+
 #include <stdio.h>
 
 #define STRING_SIZE 64

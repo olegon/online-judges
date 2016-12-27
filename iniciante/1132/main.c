@@ -1,3 +1,8 @@
+/*
+Múltiplos de 13
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1132
+*/
+
 #include <stdio.h>
 
 #define MIN(a,b) ((a) < (b) ? (a) : (b))

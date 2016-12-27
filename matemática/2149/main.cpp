@@ -1,3 +1,8 @@
+/*
+Sequência do Tio Phill Bonati
+https://www.urionlinejudge.com.br/judge/pt/problems/view/2149
+*/
+
 #include <iostream>
 
 using namespace std;

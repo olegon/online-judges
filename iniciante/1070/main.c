@@ -1,3 +1,8 @@
+/*
+Seis Números Ímpares
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1070
+*/
+
 #include <stdio.h>
 
 int main (void) {

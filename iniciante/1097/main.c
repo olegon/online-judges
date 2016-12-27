@@ -1,3 +1,8 @@
+/*
+Sequencia IJ 3
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1097
+*/
+
 #include <stdio.h>
 
 int main (void) {

@@ -1,3 +1,8 @@
+/*
+Zero vale Zero
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1871
+*/
+
 #include <iostream>
 #include <stack>
 

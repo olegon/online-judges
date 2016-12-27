@@ -1,3 +1,8 @@
+/*
+Sequência Lógica 2
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1145
+*/
+
 #include <stdio.h>
 
 int main (void) {

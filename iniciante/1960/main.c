@@ -1,3 +1,8 @@
+/*
+Numeração Romana para Números de Página
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1960
+*/
+
 #include <stdio.h>
 
 void imprimirEmRomano(int numero);

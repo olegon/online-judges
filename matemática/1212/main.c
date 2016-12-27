@@ -1,3 +1,8 @@
+/*
+Aritmética Primária
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1212
+*/
+
 #include <stdio.h>
 
 int quantosVaiMaisUm(int a, int b, int carry);

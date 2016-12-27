@@ -1,3 +1,8 @@
+/*
+Leitura Ótica
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1129
+*/
+
 #include <stdio.h>
 
 char obterAlternativaSelecionada(int *alternativas, int quantidadeDeAlternativas);

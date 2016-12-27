@@ -1,3 +1,8 @@
+/*
+Tempo de Jogo com Minutos
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1047
+*/
+
 #include <stdio.h>
 
 int main (void) {

@@ -1,3 +1,8 @@
+/*
+Ida à Feira
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1281
+*/
+
 #include <iostream>
 #include <string>
 #include <map>

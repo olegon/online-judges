@@ -1,3 +1,8 @@
+/*
+Desafio de Bino
+https://www.urionlinejudge.com.br/judge/pt/problems/view/2060
+*/
+
 #include <stdio.h>
 
 int main (void) {

@@ -1,3 +1,8 @@
+/*
+KiloMan
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1250
+*/
+
 #include <iostream>
 #include <vector>
 

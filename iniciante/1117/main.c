@@ -1,3 +1,8 @@
+/*
+Validação de Nota
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1117
+*/
+
 #include <stdio.h>
 
 int main (void) {

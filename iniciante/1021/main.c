@@ -1,3 +1,8 @@
+/*
+Notas e Moedas
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1021
+*/
+
 #include <stdio.h>
 
 int main (void) {

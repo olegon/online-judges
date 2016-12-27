@@ -1,3 +1,8 @@
+/*
+Senha Fixa
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1114
+*/
+
 #include <stdio.h>
 
 #define SENHA_VALIDA 2002

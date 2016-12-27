@@ -1,3 +1,8 @@
+/*
+Oráculo de Alexandria
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1457
+*/
+
 #include <cstdio>
 
 using namespace std;

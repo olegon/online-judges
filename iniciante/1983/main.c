@@ -1,3 +1,8 @@
+/*
+O Escolhido
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1983
+*/
+
 #include <stdio.h>
 
 int main (void) {

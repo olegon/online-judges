@@ -1,3 +1,8 @@
+/*
+Etiquetas Coloridas
+https://www.urionlinejudge.com.br/judge/pt/problems/view/2233
+*/
+
 #include <stdio.h>
 
 int main (void) {

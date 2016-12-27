@@ -1,3 +1,8 @@
+/*
+Preenchimento de Vetor II
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1177
+*/
+
 #include <stdio.h>
 
 #define SIZE 1000

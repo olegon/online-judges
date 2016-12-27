@@ -1,3 +1,8 @@
+/*
+WERTYU
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1196
+*/
+
 #include <stdio.h>
 
 #define MAX_STRING_SIZE 1024

@@ -1,3 +1,8 @@
+/*
+Aliteração
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1263
+*/
+
 #include <iostream>
 #include <string>
 #include <sstream>

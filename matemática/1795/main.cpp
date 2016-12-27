@@ -1,3 +1,8 @@
+/*
+Triângulo Trinomial
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1795
+*/
+
 #include <iostream>
 
 using namespace std;

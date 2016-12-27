@@ -1,3 +1,8 @@
+/*
+Problema com Mediana e Média
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1379
+*/
+
 #include <iostream>
 
 using namespace std;

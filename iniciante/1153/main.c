@@ -1,3 +1,8 @@
+/*
+Fatorial Simples
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1153
+*/
+
 #include <stdio.h>
 
 long unsigned int fatorial(int n);

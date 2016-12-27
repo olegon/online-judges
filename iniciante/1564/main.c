@@ -1,3 +1,8 @@
+/*
+Vai Ter Copa?
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1564
+*/
+
 #include <stdio.h>
 
 int main (void) {
