@@ -1,48 +1,55 @@
+/*
+Todos os diretórios que possuirem os arquivos desc.txt e main.{c,cpp} serão manipulados.
+Como resultado, o arquivo com main.{c,cpp} receberá o conteúdo de desc.txt como comentário no começo do código
+e o arquivo desc.txt será excluído.
+*/
+
 const fs = require('fs');
 const path = require('path');
 
-function check(pathname) {
-    fs.stat(pathname, function (err, data) {
+function checar(caminho) {
+    fs.stat(caminho, (err, stats) => {
         if (err) throw new Error(err);
 
-        if (data.isDirectory()) {
-            readDirectory(pathname);
+        if (stats.isDirectory()) {
+            lerDiretorio(caminho);
         }
     });
 }
 
-function readDirectory(pathname) {
-    fs.readdir(pathname, function (err, data) {
+function lerDiretorio(caminho) {
+    fs.readdir(caminho, (err, arquivos) => {
         if (err) throw new Error(err);
 
-        if ((data.includes('main.cpp') || data.includes('main.c')) && data.includes('desc.txt')) {
-            manipulate(pathname, data.includes('main.cpp') ? 'main.cpp' : 'main.c');
+        if ((arquivos.includes('main.cpp') || arquivos.includes('main.c')) && arquivos.includes('desc.txt')) {
+            manipularCodigoFonte(caminho, arquivos.includes('main.cpp') ? 'main.cpp' : 'main.c');
         }
         else {
-            for (let name of data) {
-                check(path.join(pathname, name));
+            for (let nomeDoArquivo of arquivos) {
+                if (nomeDoArquivo == '.git') continue;
+                checar(path.join(caminho, nomeDoArquivo));
             }
         }
 
     });
 }
 
-function manipulate(pathname, sourcename) {
-    fs.readFile(path.join(pathname, 'desc.txt'), 'utf8', function (err, desc) {
+function manipularCodigoFonte(caminho, nomeDoArquivo) {
+    fs.readFile(path.join(caminho, 'desc.txt'), 'utf8', (err, desc) => {
         if (err) throw new Error(err);
 
-        fs.readFile(path.join(pathname, sourcename), 'utf8', function (err, source) {
+        fs.readFile(path.join(caminho, nomeDoArquivo), 'utf8', (err, source) => {
             if (err) throw new Error(err);
 
-            fs.writeFile(path.join(pathname, sourcename), `/*\n${desc}*/\n\n${source}`, 'utf8', function (err, data) {
+            fs.writeFile(path.join(caminho, nomeDoArquivo), `/*\n${desc}*/\n\n${source}`, 'utf8', (err) => {
                 if (err) throw new Error(err);
             });
 
-            fs.unlink(path.join(pathname, 'desc.txt'), function (err, data) {
+            fs.unlink(path.join(caminho, 'desc.txt'), (err) => {
                 if (err) throw new Error(err);
             });
         });
     });
 }
 
-check(__dirname);
+checar(__dirname);
