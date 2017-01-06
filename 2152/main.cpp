@@ -1,6 +1,6 @@
 /*
-{name}
-{url}
+Pepe, Já Tirei a Vela!
+https://www.urionlinejudge.com.br/judge/pt/problems/view/2152
 */
 
 #include <iostream>
@@ -15,7 +15,7 @@ int main(void) {
     int N;
 
     cin >> N;
-    
+
     while (N-- > 0) {
         int hora,  minuto, evento;
 
