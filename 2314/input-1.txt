@@ -1,0 +1,4 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main(void){if(1){printf("in\n");}else{printf("out\n");}while(1){printf("in\n");break;}printf("out\n");int i;for(i=0;i<10;i++){printf("Hello World\n");}return 0;}
