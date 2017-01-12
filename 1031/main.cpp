@@ -4,14 +4,18 @@ https://www.urionlinejudge.com.br/judge/pt/problems/view/1031
 */
 
 #include <iostream>
+#include <list>
 
-struct node {
-  int value;
-  node *next;
-  node *prev;
+template <typename T>
+class node {
+public:
+  T value;
+  node<T> *next;
+  node<T> *prev;
+  node(T value);
 };
 
-node* criar_lista(int n);
+node<int>* create_circular_list(int n);
 
 using namespace std;
 
@@ -21,47 +25,50 @@ int main(void) {
     int N;
 
     while (cin >> N, N != 0) {
-      for (int i = 1; i <= N; i++) {
-        node *lista = criar_lista(N);
+      int step, last;
 
-        while (lista->next != lista) {
-          node *toDelete = lista;
+      for (step = 0, last = -1; last != 13; step++) {
+        node<int> *nd = create_circular_list(N);
 
-          lista = lista->next;
-          lista->prev = toDelete->prev;
-          toDelete->prev->next = lista;
+        while (nd->next != nd) {
+          // cout << nd->value << endl;
 
-          delete toDelete;
+          nd->next->prev = nd->prev;
+          nd->prev->next = nd->next;
 
-          for (int j = 0; j < i; j++) {
-            lista = lista->next;
+          node<int> *to_delete = nd;
+          nd = nd->next;
+
+          delete to_delete;
+
+          for (int h = 0; h < step; h++) {
+            nd = nd->next;
           }
         }
 
-        int lastOne = lista->value;
-        delete lista;
+        last = nd->value;
 
-        if (lastOne == 13) {
-          cout << (i + 1) << endl;
-          break;
-        }
+        delete nd;
       }
+
+      cout << step << endl;
     }
 
     return 0;
 }
 
-node* criar_lista(int n) {
-  node *list, *last;
+template <typename T>
+node<T>::node(T value) {
+  this->value = value;
+}
 
-  list = last = new node();
+node<int>* create_circular_list(int n) {
+  node<int> *list, *last;
 
-  last->value = 1;
-  last->next = NULL;
+  list = last = new node<int>(1);
 
   for (int i = 2; i <= n; i++) {
-    last->next = new node();
-    last->next->value = i;
+    last->next = new node<int>(i);
     last->next->prev = last;
 
     last = last->next;
