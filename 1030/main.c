@@ -4,41 +4,86 @@ https://www.urionlinejudge.com.br/judge/pt/problems/view/1030
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
-#define SIZE 10000
+typedef struct pessoa {
+  int posicao;
+  struct pessoa *prox;
+} Pessoa;
 
-int calc(int n, int k);
+Pessoa* criarCirculo (int n);
+void matarVizinho (Pessoa *pessoa);
+void imprimir (const Pessoa *pessoa);
+int resolverJosephus (int n, int m);
 
 int main (void) {
-  int nc, i;
-  int n, k, j, next, skip;
+  int NC,
+      i;
 
-  int pessoas[SIZE];
+  scanf("%d", &NC);
 
-  scanf("%d", &nc);
+  for (i = 1; i <= NC; i++) {
+    int N, M;
 
-  for (i = 0; i < nc; i++) {
-    scanf("%d %d", &n, &k);
+    scanf("%d %d", &N, &M);
 
-    printf("Case %d: %d\n", i, calc(n, k));
+    printf("Case %d: %d\n", i, resolverJosephus(N, M));
   }
 
-  return 0;
+  return EXIT_SUCCESS;
 }
 
-int calc(int n, int k) {
-  int div, mod;
+Pessoa* criarCirculo (int n) {
+  Pessoa *primeiraPessoa, *pessoaPtr;
+  int i;
 
-  div = n / k;
-  mod = n % k;
+  i = 1;
 
-  printf("%d %d\n", div, mod);
-  fflush(stdout);
+  primeiraPessoa = malloc(sizeof(Pessoa));
+  primeiraPessoa->posicao = i++;
 
-  if (n == 1) {
-    return 1;
+  for (pessoaPtr = primeiraPessoa; i <= n; i++) {
+    pessoaPtr->prox = malloc(sizeof(Pessoa));
+    pessoaPtr->prox->posicao = i;
+
+    pessoaPtr = pessoaPtr->prox;
   }
-  else {
-    return calc(n - div, k) + mod;
+
+  pessoaPtr->prox = primeiraPessoa;
+
+  return primeiraPessoa;
+}
+
+
+void matarVizinho (Pessoa *pessoa) {
+  Pessoa *pessoaQueVaiMorrer = pessoa->prox;
+
+  pessoa->prox = pessoaQueVaiMorrer->prox;
+
+  free(pessoaQueVaiMorrer);
+}
+
+void imprimir (const Pessoa *pessoa) {
+  printf("Pessoa %3d\n", pessoa->posicao);
+}
+
+int resolverJosephus (int n, int m) {
+  Pessoa *pessoaPtr;
+  int i;
+
+  pessoaPtr = criarCirculo(n);
+
+  while (pessoaPtr->prox != pessoaPtr) {
+    for (i = 1; i < m - 1; i++) pessoaPtr = pessoaPtr->prox;
+
+    matarVizinho(pessoaPtr);
+
+    pessoaPtr = pessoaPtr->prox;
   }
+
+  i = pessoaPtr->posicao;
+
+  free(pessoaPtr);
+
+  return i;
 }
