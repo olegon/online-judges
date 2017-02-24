@@ -5,9 +5,13 @@ https://www.urionlinejudge.com.br/judge/pt/problems/view/1084
 
 #include <iostream>
 #include <cstdlib>
-#include <list>
+#include <vector>
+#include <utility>
+#include <algorithm>
 
 using namespace std;
+
+typedef pair<int, char> ic;
 
 int main(void) {
     ios::sync_with_stdio(false);
@@ -16,33 +20,34 @@ int main(void) {
 
     while (cin >> N >> D >> ws, N != 0 || D != 0) {
         string number;
-        list<char> l;
-
-        int size = N;
-        int desiredSize = N - D;
+        vector<ic*> indexCharacters;
 
         getline(cin, number);
 
         for (int i = 0; i < N; i++) {
-            l.push_back(number[i]);
+            ic *indexCharacter = new ic(i, number[i]);
+            indexCharacters.push_back(indexCharacter);
         }    
 
-        while (size > desiredSize) {
-            auto min = l.begin();
-
-            for (auto it = l.begin(); it != l.end(); ++it) {
-                if (*it < *min) min = it;
-
-                if (*min == '0') break;
+        sort(indexCharacters.begin(), indexCharacters.end(), [] (ic *a, ic *b) -> bool {
+            if (a->second == b->second) {
+                return a->first < b->first;
             }
+            else {
+                return a->second < b->second;
+            }
+        });
 
-            l.erase(min);
-            size--;
+        sort(indexCharacters.begin() + D, indexCharacters.end(), [] (ic *a, ic *b) -> bool {
+            return a->first < b->first;
+        });
+
+        for (int i = D; i < N; i++) {
+            // cout << "(" << indexCharacters[i]->first << ", " << indexCharacters[i]->second << ") ";
+            cout << indexCharacters[i]->second;
         }
 
-        for (auto it = l.begin(); it != l.end(); ++it) {
-            cout << *it;
-        }      
+        // for (int i = 0; i < N; i++) free(indexCharacters[i]);
 
         cout << '\n';
     }    
