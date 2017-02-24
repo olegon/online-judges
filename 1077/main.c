@@ -30,8 +30,7 @@ int main (void) {
 }
 
 void paraPosfixa(const char *exp, char *out) {
-    size_t bsize = strlen(exp) + 1;
-    char *p = malloc(bsize * sizeof(char));
+    char p[EXP_MAX_SIZE];
     int i, o = 0, t = -1;
     char c;
 
