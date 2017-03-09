@@ -68,5 +68,6 @@ bool checarCiclos(int origem, vector<list<int>> &adj, vector<bool> &visitado, ve
 
         visitadoNoCaminho[origem] = false;
     }
-    else return false;
+    
+    return false;
 }
