@@ -5,50 +5,41 @@ https://www.urionlinejudge.com.br/judge/pt/problems/view/1084
 
 #include <iostream>
 #include <cstdlib>
-#include <vector>
-#include <utility>
-#include <algorithm>
+#include <deque>
 
 using namespace std;
-
-typedef pair<int, char> ic;
 
 int main(void) {
     ios::sync_with_stdio(false);
 
-    int N, D;
+    int N, D;    
 
     while (cin >> N >> D >> ws, N != 0 || D != 0) {
-        string number;
-        vector<ic*> indexCharacters;
+        string numero;        
+        deque<char> digitos;
+        int i, removidos;
 
-        getline(cin, number);
+        getline(cin, numero);
 
-        for (int i = 0; i < N; i++) {
-            ic *indexCharacter = new ic(i, number[i]);
-            indexCharacters.push_back(indexCharacter);
-        }    
+        for (i = 0, removidos = 0; i < N && removidos < D; i++) {
+            char digito = numero[i];
 
-        sort(indexCharacters.begin(), indexCharacters.end(), [] (ic *a, ic *b) -> bool {
-            if (a->second == b->second) {
-                return a->first < b->first;
-            }
+            if (digitos.empty() || digito < digitos.back()) digitos.push_back(numero[i]);
             else {
-                return a->second < b->second;
+                while (!digitos.empty() && digitos.back() < digito && removidos < D) {
+                    digitos.pop_back();                    
+                    removidos++;
+                }    
+                digitos.push_back(digito);         
             }
-        });
-
-        sort(indexCharacters.begin() + D, indexCharacters.end(), [] (ic *a, ic *b) -> bool {
-            return a->first < b->first;
-        });
-
-        for (int i = D; i < N; i++) {
-            // cout << "(" << indexCharacters[i]->first << ", " << indexCharacters[i]->second << ") ";
-            cout << indexCharacters[i]->second;
         }
 
-        // for (int i = 0; i < N; i++) free(indexCharacters[i]);
-
+        for (; i < N; i++) digitos.push_back(numero[i]);
+        
+        for (int i = 0, q = N - D; i < q; i++) {
+            cout << digitos.front();
+            digitos.pop_front();
+        }
         cout << '\n';
     }    
 
