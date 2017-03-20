@@ -10,7 +10,7 @@ https://www.urionlinejudge.com.br/judge/pt/problems/view/1610
 using namespace std;
 
 bool checarCiclos(vector<list<int>> &adj);
-bool checarCiclos(int origem, vector<list<int>> &adj, vector<bool> &visitado, vector<bool> &visitadoNoCaminho);
+bool checarCiclos(int origem, vector<list<int>> &adj, vector<bool> &visitado, vector<bool> &local);
 
 int main(void) {
     ios::sync_with_stdio(false);
@@ -46,28 +46,28 @@ int main(void) {
 
 bool checarCiclos(vector<list<int>> &adj) {
     int N = adj.size();
-    vector<bool> visitado(N);
-    vector<bool> visitadoNoCaminho(N);
+    vector<bool> visitado(N, false);
+    vector<bool> local(N, false);
     
     for (int i = 0; i < N; i++) {
-        if (checarCiclos(i, adj, visitado, visitadoNoCaminho)) return true;
+        if (checarCiclos(i, adj, visitado, local)) return true;
     }
 
     return false;
 }
 
-bool checarCiclos(int origem, vector<list<int>> &adj, vector<bool> &visitado, vector<bool> &visitadoNoCaminho) {
-    if (!visitado[origem]) {
-        visitado[origem] = true;
-        visitadoNoCaminho[origem] = true;
+bool checarCiclos(int origem, vector<list<int>> &adj, vector<bool> &visitado, vector<bool> &local) {
+    if (local[origem]) return true;
+    if (visitado[origem]) return false;
 
-        for (auto destino : adj[origem]) {
-            if (!visitado[destino] && checarCiclos(destino, adj, visitado, visitadoNoCaminho)) return true;
-            else if (visitadoNoCaminho[destino]) return true;
-        }      
+    visitado[origem] = true;
+    local[origem] = true;
 
-        visitadoNoCaminho[origem] = false;
+    for (auto destinoIt = adj[origem].begin(); destinoIt != adj[origem].end(); ++destinoIt) {
+        if (checarCiclos(*destinoIt, adj, visitado, local)) return true;
     }
+
+    local[origem] = false;
     
     return false;
 }
