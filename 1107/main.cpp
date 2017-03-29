@@ -10,7 +10,6 @@ https://www.urionlinejudge.com.br/judge/pt/problems/view/1107
 using namespace std;
 
 int ligacoes(int A, int C, vector<int> &alturas);
-int ligacoes(int A, int C, vector<int> &alturas, int h);
 
 int main(void) {
     ios::sync_with_stdio(false);
@@ -29,24 +28,19 @@ int main(void) {
 }
 
 int ligacoes(int A, int C, vector<int> &alturas) {
-    return ligacoes(A, C, alturas, A);
-}
+    int h = A;
+    int ligou = 0;
 
-int ligacoes(int A, int C, vector<int> &alturas, int h) {
-    if (h > 0) {
-        int ligou = 0;
-        int ligado = false;
-
-        for (int i = 0; i < C; i++) {
-            if (alturas[i] >= h) ligado = false;
-            else if (!ligado) {
-                ligado = true;
-                ligou += 1;
-            }
+    for (int i = 0; i < C; i++) {
+        // Se a altura atual (altura[i]) for menor que a última altura (h),
+        // então significa que a máquina terá um trabalho a mais para perfurar
+        // igual a (h - alturas[i])
+        if (alturas[i] < h) {
+            ligou += h - alturas[i];
         }
 
-        if (ligou == 0) return 0;
-        else return ligou + ligacoes(A, C, alturas, h - 1);
+        h = alturas[i];
     }
-    else return 0;
+    
+    return ligou;
 }
