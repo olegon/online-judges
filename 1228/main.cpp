@@ -25,7 +25,7 @@ int main(void) {
 
             cin >> carro;
 
-            largada[carro - 1] = i;
+            largada[i] = carro;
         }
 
         for (int i = 0; i < N; i++) {
@@ -36,12 +36,16 @@ int main(void) {
             chegada[i] = carro;
         }
 
-        for (int i = 1; i < N; i++) {
-            int carroA = chegada[i - 1];
-            int carroB = chegada[i];
-            int diff = largada[carroA - 1] - largada[carroB - 1];
-
-            ultrapassagens += max(0, diff);
+        // N = 24, então KISS!
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (largada[j] == -1) continue;
+                else if (largada[j] == chegada[i]) {
+                    largada[j] = -1;
+                    break;
+                }
+                else ultrapassagens++;
+            }
         }
 
         cout << ultrapassagens << '\n';
