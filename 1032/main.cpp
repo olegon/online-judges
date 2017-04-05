@@ -11,6 +11,7 @@ using namespace std;
 
 struct node {
     int value;
+    node *previous;
     node *next;
 };
 
@@ -21,31 +22,40 @@ node* criarCirculo(int n);
 int main(void) {
     ios::sync_with_stdio(false);
 
-    int N;
+    size_t N;
 
     while (cin >> N, N != 0) {
         vector<int> primos;
 
         node *current = criarCirculo(N);
-        int i = 0;
+        int pIndex = 0;
         
-        while (N-- > 1) {
-            int primo = PRIMOS[i++];
+        while (N > 1) {
+            size_t primo = PRIMOS[pIndex++];
 
-            for (int i = 1; i < primo - 1; i++) {
-                current = current->next;
+            size_t limit = primo % N;
+            if (limit == 0) {
+                current = current->previous;
+            }
+            else {
+                for (size_t i = 1; i < limit; i++) {
+                    current = current->next;
+                }
             }
 
-            node *willDie = current->next;
-            current->next = willDie->next;
-            current = willDie->next;
+            current->previous->next = current->next;
+            node *willDie = current;
+            current = current->next;
+            current->previous = willDie->previous;
 
-            // delete willDie;
+            delete willDie;
+
+            N -= 1;
         }
 
         cout << current->value << endl;
 
-        // delete current;
+        delete current;
     }    
 
     return EXIT_SUCCESS;
@@ -62,12 +72,14 @@ node* criarCirculo(int n) {
         node *current = new node();
 
         current->value = i;
+        current->previous = previous;
         previous->next = current;
 
         previous = current;
     }
 
     previous->next = start;
+    start->previous = previous;
 
     return start;
 }
