@@ -41,6 +41,8 @@ int main(void) {
         for (auto p : especies) {
             cout << p.first << " " << fixed << setprecision(4) << (100.0 * p.second / quantidade) << '\n';
         }
+
+        if (N != 0) cout << '\n';
     }
 
 
