@@ -4,70 +4,61 @@ https://www.urionlinejudge.com.br/judge/pt/problems/view/1610
 */
 
 #include <iostream>
+#include <cstdlib>
 #include <vector>
-#include <list>
 
 using namespace std;
 
-bool checarCiclos(vector<list<int>> &adj);
-bool checarCiclos(int origem, vector<list<int>> &adj, vector<bool> &visitado, vector<bool> &local);
+bool possuiCiclo(int origem, const vector< vector<int> > &adj, vector<bool> &visitados_globalmente,
+    vector<bool> &visitados_locamente);
 
 int main(void) {
     ios::sync_with_stdio(false);
 
-    int T;
+    int N;
 
-    cin >> T;
-    while(T-- > 0) {
-        int N, M;
+    cin >> N;
 
-        cin >> N >> M;
+    while (N-- > 0) {
+        int M, N;
+        
+        cin >> M >> N;
 
-        vector<list<int>> adj(N);
+        vector< vector<int> > adj(M);
+        vector<bool> visitados_globalmente(M, false), visitados_localmente(M, false);
 
-        for (int i = 0; i < M; i++) {
-            int A, B;
+        for (int i = 0; i < N; i++) {
+            int origem, destino;
 
-            cin >> A >> B;
+            cin >> origem >> destino;
 
-            adj[A - 1].push_back(B - 1);
+            adj[origem - 1].push_back(destino - 1);
         }
 
-        if (checarCiclos(adj)) {
-            cout << "SIM\n";
+        bool cicloEncontrado = false;
+        for (int origem = 0; !cicloEncontrado && origem < M; origem++) {
+            cicloEncontrado = possuiCiclo(origem, adj, visitados_globalmente, visitados_localmente);
         }
-        else {
-            cout << "NAO\n";
-        }
+
+        if (cicloEncontrado) cout << "SIM" << endl;
+        else cout << "NAO" << endl;
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 
-bool checarCiclos(vector<list<int>> &adj) {
-    int N = adj.size();
-    vector<bool> visitado(N, false);
-    vector<bool> local(N, false);
-    
-    for (int i = 0; i < N; i++) {
-        if (checarCiclos(i, adj, visitado, local)) return true;
+bool possuiCiclo(int origem, const vector< vector<int> > &adj, vector<bool> &visitados_globalmente, vector<bool> &visitados_localmente) {
+    if (visitados_localmente[origem]) return true;
+    if (visitados_globalmente[origem]) return false;
+
+    visitados_globalmente[origem] = true;
+    visitados_localmente[origem] = true;
+
+    for (auto destino : adj[origem]) {
+        if (possuiCiclo(destino, adj, visitados_globalmente, visitados_localmente)) return true;
     }
 
-    return false;
-}
+    visitados_localmente[origem] = false;
 
-bool checarCiclos(int origem, vector<list<int>> &adj, vector<bool> &visitado, vector<bool> &local) {
-    if (local[origem]) return true;
-    if (visitado[origem]) return false;
-
-    visitado[origem] = true;
-    local[origem] = true;
-
-    for (auto destinoIt = adj[origem].begin(); destinoIt != adj[origem].end(); ++destinoIt) {
-        if (checarCiclos(*destinoIt, adj, visitado, local)) return true;
-    }
-
-    local[origem] = false;
-    
     return false;
 }
