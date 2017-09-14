@@ -1,8 +1,12 @@
-# URI Online Judge - Soluções
+# Online Judges - Soluções
 
-Minhas soluções para os problemas do [URI Online Judge] :blush:
+Minhas soluções para problemas de _onlines judges_ :blush:
 
-Meu perfil pode ser acessado [aqui] :point_left:
 
-[URI Online Judge]: https://www.urionlinejudge.com.br/
-[aqui]: https://www.urionlinejudge.com.br/judge/pt/profile/74386
+## [URI Online Judge](https://www.urionlinejudge.com.br/)
+
+Meu perfil pode ser acessado [aqui](https://www.urionlinejudge.com.br/judge/pt/profile/74386) :point_left:
+
+## [TopCoder](https://www.topcoder.com/)
+
+Meu perfil pode ser acessado [aqui](https://www.topcoder.com/members/olegon.main/) :point_left:
