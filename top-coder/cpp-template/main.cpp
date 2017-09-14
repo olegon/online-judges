@@ -7,13 +7,9 @@ Categories:     {categories}
 {URL}
 */
 
-#include <iostream>
-#include <cstdlib>
-
 using namespace std;
 
-int main(void) {
-    ios::sync_with_stdio(false);
+class CLASS_NAME {
+public:
 
-    return EXIT_SUCCESS;
-}
+};
