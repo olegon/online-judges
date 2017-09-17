@@ -24,8 +24,7 @@ int main(void) {
     vector<uint64> primos = primosAte(N);
     uint64 limit = sqrt(N);
     
-    if (despojado(N, primos)) r++;
-    for (uint64 i = 2; i <= limit; i++) {
+    for (uint64 i = 1; i <= limit; i++) {
         if (N % i == 0) {
             uint64 a = i, b = N / i;
 
