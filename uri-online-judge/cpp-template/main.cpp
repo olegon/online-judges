@@ -3,8 +3,7 @@
 {url}
 */
 
-#include <iostream>
-#include <cstdlib>
+#include <bits/stdc++.h>
 
 using namespace std;
 
