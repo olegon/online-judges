@@ -50,8 +50,8 @@ uint64 menor_custo(int i, int N, int C, vector<int> &impostos_devidos, vector< v
     for (int j = 0; j < N; j++) {
         if (adj[i][j] > 0 && !visitados[j]) {
             total += menor_custo(j, N, C, impostos_devidos, adj, visitados, cofres);
-            cofres[i] += cofres[j];
             total += ceil(1.0 * cofres[j] / C) * 2 * adj[i][j];
+            cofres[i] += cofres[j];
         }
     }
     
