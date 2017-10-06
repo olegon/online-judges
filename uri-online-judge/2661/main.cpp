@@ -1,79 +1,43 @@
-/*
-Despojados
-https://www.urionlinejudge.com.br/judge/pt/problems/view/2661
-*/
-
 #include <bits/stdc++.h>
-
-#define DEBUG(N) cout << #N << " = " << N << endl;
 
 using namespace std;
 
 typedef unsigned long long int uint64;
 
-vector<uint64> primosAte(uint64 n);
-bool despojado(uint64 n, vector<uint64> &primos);
+set<uint64> primos_distintos_da_fatoracao(uint64 n);
 
 int main(void) {
     ios::sync_with_stdio(false);
 
-    uint64 N, r = 0;
+    uint64 N, S;
 
     cin >> N;
 
-    vector<uint64> primos = primosAte(N);
-    uint64 limit = sqrt(N);
+    set<uint64> C = primos_distintos_da_fatoracao(N);
     
-    for (uint64 i = 1; i <= limit; i++) {
-        if (N % i == 0) {
-            uint64 a = i, b = N / i;
+    S = pow(2, C.size()) - C.size() - 1;
 
-            if (despojado(a, primos)) r++;
-            if (b != a && despojado(b, primos)) r++;
-        }
-    }
+    cout << S << endl;
 
-    cout << r << endl;
-    
     return EXIT_SUCCESS;
 }
 
-vector<uint64> primosAte(uint64 n) {
-    vector<uint64> primos;
+set<uint64> primos_distintos_da_fatoracao(uint64 n) {
+    set<uint64> primos_distintos;
 
-    if (n < 2) return primos;
-
-    primos.push_back(2);
-    
-    uint64 limit = sqrt(n);
-    for (uint64 i = 3; i <= limit; i += 2) {
-        bool _primo = true;
-        uint64 _limit = sqrt(i);
-
-        for (uint64 p : primos) {
-            if (!_primo || p > _limit) break;
-            
-            _primo = i % p != 0;
-        }
-        
-        if (_primo) primos.push_back(i);
+    while (n % 2 == 0) {
+        primos_distintos.insert(2);
+        n /= 2;
     }
 
-    return primos;
-}
-
-bool despojado(uint64 n, vector<uint64> &primos) {
-    uint64 ultimoDivisor = 0, divisores = 0;
-    
-    for (auto p = primos.begin(); n > 1 && p != primos.end(); ++p) {
-        while (n % *p == 0) {
-            if (ultimoDivisor == *p) return false;
-
-            n /= *p;
-            ultimoDivisor = *p;
-            divisores++;
+    for (uint64 i = 3; n != 1 && i <= sqrt(n); i += 2) {
+        while (n % i == 0) {
+            primos_distintos.insert(i);
+            n /= i;
         }
     }
 
-    return divisores > 1;
+    if (n > 1) primos_distintos.insert(n);
+
+    return primos_distintos;
 }
