@@ -1,3 +1,8 @@
+/*
+Despojados
+https://www.urionlinejudge.com.br/judge/pt/problems/view/2661
+*/
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -30,7 +35,7 @@ set<uint64> primos_distintos_da_fatoracao(uint64 n) {
         n /= 2;
     }
 
-    for (uint64 i = 3; n != 1 && i <= sqrt(n); i += 2) {
+    for (uint64 i = 3; i <= sqrt(n); i += 2) {
         while (n % i == 0) {
             primos_distintos.insert(i);
             n /= i;
