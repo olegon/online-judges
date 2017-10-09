@@ -15,7 +15,7 @@ uint64 mdc(uint64 a, uint64 b) {
 }
 
 uint64 mmc(uint64 a, uint64 b) {
-    return a / mdc(a, b) * b;
+    return a * b / mdc(a, b);
 }
 
 int main(void) {
