@@ -7,8 +7,6 @@ K. MaratonIME goes to the karaoke (http://codeforces.com/gym/100985/problem/K)
 
 using namespace std;
 
-size_t ulog(size_t n);
-
 int main(void) {
     ios::sync_with_stdio(false);
 
