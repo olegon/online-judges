@@ -1,6 +1,6 @@
 /*
-B. MaratonIME plays Cîrokime
-http://codeforces.com/gym/100985/problem/B
+II USP Freshmen Contest (http://codeforces.com/gym/100985)
+B. MaratonIME plays Cîrokime (http://codeforces.com/gym/100985/problem/B)
 */
 
 #include <bits/stdc++.h>
