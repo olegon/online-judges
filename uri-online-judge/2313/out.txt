@@ -1,0 +1,5 @@
+a: 3
+b: 4
+h: 5
+Valido-Escaleno
+Retangulo: S
