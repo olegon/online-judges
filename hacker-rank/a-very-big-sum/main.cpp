@@ -1,6 +1,6 @@
 /*
 A Very Big Sum
-https://www.hackerrank.com/challenges/a-very-big-sum/problem?h_r=next-challenge&h_v=zen
+https://www.hackerrank.com/challenges/a-very-big-sum/problem
 */
 
 #include <bits/stdc++.h>
