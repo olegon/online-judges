@@ -10,8 +10,8 @@ using namespace std;
 int main(void) {
     ios::sync_with_stdio(false);
 
-    int N,
-        total = 0;
+    int N;
+    unsigned long long total = 0;
 
     cin >> N;
 
@@ -25,9 +25,21 @@ int main(void) {
         else candies[i] = 1;
     }
 
+    // cout << candies[0];
+    // for (int i = 1; i < N; i++) {
+    //     cout << " " << candies[i];
+    // }
+    // cout << endl;
+
     for (int i = N - 2; i > -1; i--) {
         if (ratings[i] > ratings[i + 1]) candies[i] = max(candies[i + 1] + 1, candies[i]);
     }
+
+    // cout << candies[0];
+    // for (int i = 1; i < N; i++) {
+    //     cout << " " << candies[i];
+    // }
+    // cout << endl;
 
     for (int i = 0; i < N; i++) {
         total += candies[i];
