@@ -11,7 +11,7 @@ Meu perfil pode ser acessado [aqui](https://www.urionlinejudge.com.br/judge/pt/p
 
 Meu perfil pode ser acessado [aqui](https://www.topcoder.com/members/olegon.main) :point_left:
 
-## [CodeForces](https://www.topcoder.com/)
+## [CodeForces](https://codeforces.com/)
 
 Meu perfil pode ser acessado [aqui](http://codeforces.com/profile/_olegon) :point_left:
 
