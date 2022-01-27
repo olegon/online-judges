@@ -7,15 +7,29 @@ https://leetcode.com/problems/two-sum
 
 using namespace std;
 
+// O(n * lg n)
 class Solution {
 public:
-    // O(n * lg n)
-    vector<int> twoSum(vector<int>& nums, int target) {
+    vector<int> twoSum(vector<int>& nums, int target) const {
+         vector<int> resp;
+        
+        if (target % 2 == 0) {
+            int half = target / 2;
+
+            for (size_t i = 0; i < nums.size(); i++) {
+                if (nums[i] == half) {
+                    resp.push_back(i);
+                }
+
+                if (resp.size() == 2) return resp;
+            }
+        }
+        resp.clear();
+
         vector<int> ordered = nums;
 
         sort(ordered.begin(), ordered.end());
-        vector<int> resp;
-        
+       
         auto current = ordered.begin();
         auto end = ordered.end();
         while (current != end) {
@@ -23,15 +37,8 @@ public:
             int desired = target - currentNumber;
 
             if (binary_search(current + 1, end, desired)) {
-                if (currentNumber == desired) {
-                    size_t idx = indexOf(nums, currentNumber, 0);
-                    resp.push_back(idx);
-                    resp.push_back(indexOf(nums, desired, idx + 1));
-                }
-                else {
-                    resp.push_back(indexOf(nums, currentNumber, 0));
-                    resp.push_back(indexOf(nums, desired, 0));
-                }
+                resp.push_back(indexOf(nums, currentNumber));
+                resp.push_back(indexOf(nums, desired));
                 
                 break;
             }
@@ -42,12 +49,12 @@ public:
         return resp;
     }
 
-    size_t indexOf(vector<int> &nums, int value, size_t i) const {
-        for (; i < nums.size(); i++) {
-            if (nums[i] == value) break;
+    size_t indexOf(vector<int> &nums, int value) const {
+        for (size_t i = 0; i < nums.size(); i++) {
+            if (nums[i] == value) return i;
         }
 
-        return i;
+        return nums.size();
     }
 };
 
