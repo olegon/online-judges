@@ -90,7 +90,7 @@ int _lcs_recursive(const vector<int> &a, const vector<int> &b, size_t i, size_t 
 }
 
 
-vector<int> lcs_recursive(vector<int> a, vector<int> b) {
+vector<int> lcs_recursive(const vector<int> &a, const vector<int> &b) {
     auto dp = vector<vector<int>>(a.size(), vector<int>(b.size(), -1));
 
     _lcs_recursive(a, b, 0, 0, dp);
