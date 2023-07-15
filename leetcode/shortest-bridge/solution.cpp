@@ -55,8 +55,6 @@ public:
 
             if (!isOutOfBounds(size, i - 1, j)) {
                 int nextValue = grid[i - 1][j];
-
-
                 
                 if (nextValue == -2) return currentValue;
                 else if (nextValue == 0) {
@@ -66,8 +64,6 @@ public:
             }
             if (!isOutOfBounds(size, i + 1, j)) {
                 int nextValue = grid[i + 1][j];
-
-
                 
                 if (nextValue == -2) return currentValue;
                 else if (nextValue == 0) {
@@ -77,8 +73,6 @@ public:
             }
             if (!isOutOfBounds(size, i, j + 1)) {
                 int nextValue = grid[i][j + 1];
-
-
                 
                 if (nextValue == -2) return currentValue;
                 else if (nextValue == 0) {
@@ -88,8 +82,6 @@ public:
             }
             if (!isOutOfBounds(size, i, j - 1)) {
                 int nextValue = grid[i][j - 1];
-
-
                 
                 if (nextValue == -2) return currentValue;
                 else if (nextValue == 0) {
