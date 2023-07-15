@@ -18,23 +18,25 @@ var countAndSay = function(n) {
 };
 
 function analyse(number) {
-    const countingDigits = [
-        { digit: number[0], quantity: 1 }
-    ];
+    let lastDigit = number[0];
+    let lastDigitCount = 1;
+    let result = "";
 
     for (let i = 1; i < number.length; i++) {
         const digit = number[i];
-        const lastDigitSoFar = countingDigits.at(-1);
 
-        if (lastDigitSoFar.digit == digit) {
-            lastDigitSoFar.quantity++;
+        if (lastDigit == digit) {
+            lastDigitCount++;
         }
         else {
-            countingDigits.push({ digit, quantity: 1 })
+            result += `${lastDigitCount}${lastDigit}`;
+
+            lastDigit = digit;
+            lastDigitCount = 1;
         }
     }
 
-    return countingDigits
-        .map(({ digit, quantity }) => `${quantity}${digit}`)
-        .join('');
+    result += `${lastDigitCount}${lastDigit}`;
+
+    return result;
 }
