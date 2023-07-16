@@ -23,8 +23,11 @@ public:
                     q.push(make_pair(i, j));
                     
                     while (!q.empty()) {
-                        auto [i, j] = q.front();
+                        pair<int, int> pair = q.front();
                         q.pop();
+
+                        int i = pair.first;
+                        int j = pair.second;
 
                         if (grid[i][j] == 1) {
                             grid[i][j] = currentIslandNumber;
@@ -51,8 +54,11 @@ public:
         }
 
         while (!q.empty()) {
-            auto [i, j] = q.front();
+            pair<int, int> pair = q.front();
             q.pop();
+
+            int i = pair.first;
+            int j = pair.second;
 
             // debug(grid);
 
