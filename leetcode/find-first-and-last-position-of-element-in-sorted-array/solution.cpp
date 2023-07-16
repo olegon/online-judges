@@ -10,45 +10,37 @@ using namespace std;
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        int l, r, bestLeft, bestRight;
+        int left, right, bestLeft, bestRight, bestLeftSoFar, bestRightSoFar;
 
-        l = 0;
-        r = nums.size() - 1;
-        bestLeft = bestRight = -1;
+        left = 0;
+        right = nums.size() - 1;
 
-        int idx = bsearch(nums, l, r, target);
+        bestLeft = bestRight = bestLeftSoFar = bestRightSoFar = bsearch(nums, left, right, target);
 
-        if (idx != -1) {
-            bestLeft = bestRight = idx;
-            
-            int bestLeftSoFar = bestLeft;
-            int bestRightSoFar = bestRight;
+        while (bestLeftSoFar != -1) {
+            bestLeftSoFar = bsearch(nums, left, bestLeftSoFar - 1, target);
 
-            while (true) {
-                bestLeftSoFar = bsearch(nums, l, bestLeftSoFar - 1, target);
+            if (bestLeftSoFar != -1) bestLeft = bestLeftSoFar;
+        }
 
-                if (bestLeftSoFar == -1) break;
-                else bestLeft = bestLeftSoFar;
-            }
+        while (bestRightSoFar != -1) {
+            bestRightSoFar = bsearch(nums, bestRightSoFar + 1, right, target);
 
-            while (true) {
-                bestRightSoFar = bsearch(nums, bestRightSoFar + 1, r, target);
-
-                if (bestRightSoFar == -1) break;
-                else bestRight = bestRightSoFar;
-            }
+            if (bestRightSoFar != -1) bestRight = bestRightSoFar;
         }
 
         return { bestLeft, bestRight };
     }
 
     int bsearch(vector<int>& nums, int l, int r, int target) {
-        if (l > r) return -1;
+        while (l <= r) {
+            int m = (l + r) / 2;
 
-        int m = (l + r) / 2;
+            if (nums[m] == target) return m;
+            else if (nums[m] < target) l = m + 1;
+            else r = m - 1;
+        }
 
-        if (nums[m] == target) return m;
-        else if (nums[m] < target) return bsearch(nums, m + 1, r, target);
-        else return bsearch(nums, l, m - 1, target);
+        return -1;
     }
 };
