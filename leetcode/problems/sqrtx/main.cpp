@@ -7,41 +7,28 @@ https://leetcode.com/problems/sqrtx
 
 using namespace std;
 
-typedef unsigned long long uint64;
-
 class Solution {
 public:
     int mySqrt(int x) {
-        int l = 0;
-        int r = x;
-        int bestGuess = 0;
+        if (x == 0) return 0;
+        else if (x == 1) return 1;
+        else {
+            int l = 1;
+            int r = x;
+            int best = 1;
 
-        while (l <= r) {
-            uint64 guess = (l + r) / 2;
-            uint64 result = guess * guess;
+            while (l <= r) {
+                int m = l + (r - l) / 2;
 
-            if (result <= x) bestGuess = guess;
+                if (m == x / m) return m;
+                else if (m > x / m) r = m - 1;
+                else {
+                    best = m;
+                    l = m + 1;
+                }
+            }
 
-            if (result == x) break;
-            else if (result < x) l = guess + 1;
-            else r = guess - 1;
+            return best;
         }
-
-        return bestGuess; 
     }
 };
-
-// int main(void) {
-//     ios::sync_with_stdio(false);
-
-//     Solution s;
-
-//     for (size_t i = 0; i < 1025; i++) {
-//         int result = s.mySqrt(i);
-//         cout << i << " => " << result << endl;
-//     }
-
-//     cout << 2147395599 << " => " << s.mySqrt(2147395599) << endl;
-
-//     return EXIT_SUCCESS;
-// }
