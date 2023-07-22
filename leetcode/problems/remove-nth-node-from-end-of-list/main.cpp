@@ -18,9 +18,8 @@ struct ListNode {
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        // lastElement
-        int count = 0;
         ListNode *node;
+        int count = 0;
 
         node = head;
         while (node != NULL) {
@@ -28,17 +27,17 @@ public:
             node = node->next;
         }
 
-        int indexOfNodeToBeRemoved = count - n;
+        int indexToBeRemoved = count - n;
 
-        node = head;
+        return walkAndRemove(head, indexToBeRemoved);
+    }
 
-        if (indexOfNodeToBeRemoved == 0) return node->next;
-
-        while (indexOfNodeToBeRemoved-- > 1) node = node->next;
-
-        node->next = node->next->next;
-        
-        return head;
+    ListNode* walkAndRemove(ListNode* head, int index) {
+        if (index == 0) return head->next;
+        else {
+            head->next = walkAndRemove(head->next, index - 1);
+            return head;
+        };
     }
 };
 
