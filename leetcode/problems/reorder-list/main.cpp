@@ -72,21 +72,19 @@ public:
 
         ListNode *prev = nullptr;
         ListNode *curr = head;
-        ListNode *next = head->next;
 
-        while (next != nullptr) {
+        while (curr != nullptr) {
+            ListNode *next = curr->next;
+
             // invert pointer
             curr->next = prev;
 
             // walk!
             prev = curr;
             curr = next;
-            next = curr->next;
         }
 
-        curr->next = prev;
-
-        return curr;
+        return prev;
     }
 };
 
