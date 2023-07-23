@@ -18,33 +18,67 @@ struct ListNode {
 class Solution {
 public:
     void reorderList(ListNode* head) {
-        ListNode *node;
-        deque<ListNode*> d;
+        int size = getSize(head);
 
-        node = head;
-        while (node != NULL) {
-            d.push_back(node);
-            node = node->next;
-        }
+        ListNode *firstSegment = head;
+        ListNode *midElement = getNthElement(head, size / 2);
+        ListNode *secondSegment = midElement->next;
+        midElement->next = NULL;
 
-        node = d.front();
-        d.pop_front();
-        
+        firstSegment = firstSegment->next;
+        secondSegment = invert(secondSegment);
+
+        ListNode *current = head;
+
         while (true) {
-            if (d.empty()) break;
+            if (secondSegment == NULL) break;
+            
+            current->next = secondSegment;
+            secondSegment = secondSegment->next;
+            current = current->next;
 
-            node->next = d.back();
-            d.pop_back();
-            node = node->next;
-
-            if (d.empty()) break;
-
-            node->next = d.front();
-            d.pop_front();
-            node = node->next;
+            if (firstSegment == NULL) break;
+            
+            current->next = firstSegment;
+            firstSegment = firstSegment->next;
+            current = current->next;
         }
 
-        node->next = NULL;
+        print(head);
+    }
+
+    void print(ListNode *node) {
+        if (node == NULL) cout << "NULL" << endl;
+        else {
+            cout << node->val << " -> ";
+            print(node->next);
+        }
+    }
+
+    int getSize(ListNode *node) {
+        if (node == NULL) return 0;
+        else return 1 + getSize(node->next);
+    }
+    
+    ListNode* getNthElement(ListNode *node, int index) {
+        if (index == 0) return node;
+        else return getNthElement(node->next, index - 1);
+    }
+
+    ListNode* invert(ListNode *head) {
+        if (head == NULL || head->next == NULL) return head;
+
+        ListNode *prev = NULL;
+        ListNode *curr = head;
+
+        while (curr != NULL) {
+            ListNode *temp = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = temp;
+        }
+
+        return prev;
     }
 };
 
