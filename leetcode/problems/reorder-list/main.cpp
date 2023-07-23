@@ -23,32 +23,34 @@ public:
         ListNode *firstSegment = head;
         ListNode *midElement = getNthElement(head, size / 2);
         ListNode *secondSegment = midElement->next;
-        midElement->next = NULL;
+        midElement->next = nullptr;
 
         firstSegment = firstSegment->next;
         secondSegment = invert(secondSegment);
 
+        // print(secondSegment);
+
         ListNode *current = head;
 
         while (true) {
-            if (secondSegment == NULL) break;
+            if (secondSegment == nullptr) break;
             
             current->next = secondSegment;
             secondSegment = secondSegment->next;
             current = current->next;
 
-            if (firstSegment == NULL) break;
+            if (firstSegment == nullptr) break;
             
             current->next = firstSegment;
             firstSegment = firstSegment->next;
             current = current->next;
         }
 
-        print(head);
+        // print(head);
     }
 
     void print(ListNode *node) {
-        if (node == NULL) cout << "NULL" << endl;
+        if (node == nullptr) cout << "nullptr" << endl;
         else {
             cout << node->val << " -> ";
             print(node->next);
@@ -56,7 +58,7 @@ public:
     }
 
     int getSize(ListNode *node) {
-        if (node == NULL) return 0;
+        if (node == nullptr) return 0;
         else return 1 + getSize(node->next);
     }
     
@@ -66,19 +68,25 @@ public:
     }
 
     ListNode* invert(ListNode *head) {
-        if (head == NULL || head->next == NULL) return head;
+        if (head == nullptr || head->next == nullptr) return head;
 
-        ListNode *prev = NULL;
+        ListNode *prev = nullptr;
         ListNode *curr = head;
+        ListNode *next = head->next;
 
-        while (curr != NULL) {
-            ListNode *temp = curr->next;
+        while (next != nullptr) {
+            // invert pointer
             curr->next = prev;
+
+            // walk!
             prev = curr;
-            curr = temp;
+            curr = next;
+            next = curr->next;
         }
 
-        return prev;
+        curr->next = prev;
+
+        return curr;
     }
 };
 
