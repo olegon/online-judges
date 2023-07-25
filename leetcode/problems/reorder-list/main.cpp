@@ -15,15 +15,8 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-class Solution {
-public:
-    void reorderList(ListNode* head) {
-        HonestSolution s;
-        s.reorderList(head);
-    }
-};
 
-class HonestSolution {
+class Solution {
 public:
     void reorderList(ListNode* head) {
         int size = getSize(head);
