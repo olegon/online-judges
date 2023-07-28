@@ -15,9 +15,64 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-// This is an O(N^2) solution, but the there are up to 10^4 nodes in lists parameter.
-// Its O(1) in space complexity.
 class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        if (lists.size() == 0) return nullptr;
+
+        ListNode *head = lists[0];
+
+        for (size_t i = 1; i < lists.size(); i++) {
+            head = mergeTwoLists(head, lists[i]);
+        }
+
+        return head;
+    }
+
+    ListNode *mergeTwoLists(ListNode* a, ListNode *b) {
+        if (a == nullptr) return b;
+        if (b == nullptr) return a;
+
+        ListNode *head;
+        ListNode *current;
+
+        if (a->val < b->val) {
+            head = current = a;
+            a = a->next;
+        }
+        else {
+            head = current = b;
+            b = b->next;
+        }
+
+        while (a != nullptr && b != nullptr) {
+            if (a->val < b->val) {
+                current = current->next = a;
+                a = a->next;
+            }
+            else {
+                current = current->next = b;
+                b = b->next;
+            }
+        }
+
+        while (a != nullptr) {
+            current = current->next = a;
+            a = a->next;
+        }
+
+        while (b != nullptr) {
+            current = current->next = b;
+            b = b->next;
+        }
+
+        return head;
+    }
+};
+
+// This is an O(K^2) solution, but the there are up to 10^4 lists.
+// Its O(1) in space complexity.
+class QuadraticSolution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
         ListNode *head;
