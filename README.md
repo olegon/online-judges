@@ -1,6 +1,4 @@
-# Online Judges - Soluções
-
-Minhas soluções para problemas de _onlines judges_ :blush:
+# Online Judges - Solutions
 
 |   Judge    | Profile                                            |
 | :--------: | :------------------------------------------------- |
